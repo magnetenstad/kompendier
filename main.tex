@@ -1,0 +1,384 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+%\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+% Number sets
+\usepackage{amsfonts}
+
+\title{Matematikk 2 Kompendium}
+\author{Magne Tenstad}
+
+\begin{document}
+
+\maketitle
+
+\clearpage
+
+\tableofcontents
+
+\clearpage
+
+
+
+
+\section{Ulike koordinatsystemer}
+
+
+\subsection{Kartesiske koordinater}
+Kartesiske koordinater er det vanligste koordinatsystemet. Koordinataksene $x$, $y$ og $z$ står vinkelrett på hverandre.
+
+
+\subsection{Polarkoordinater}
+Polarkoordinater er vanlige å bruke dersom en har å gjøre med sirkulære objekter i $\mathbb{R}^2$. $r$ bestemmer lengden fra origo, og $\theta$ bestemmer vinkelen. Det omgjøres fra kartesiske koordinater ved
+\begin{gather*}
+    x = r\cos{\theta}\\
+    y = r\sin{\theta}\\
+    dx\,dy = r\,dr\,d\theta
+\end{gather*}
+Vanlige grenser er
+\begin{gather*}
+    0 \leq r \leq R\\
+    0 \leq \theta \leq 2\pi
+\end{gather*}
+der R er radien til sirkelen.
+
+
+\subsection{Sylinderkoordinater}
+Sylinderkoordinater er en utvidelse av polarkoordinater, som inkluderer en $z$-akse.
+Det omgjøres fra kartesiske koordinater ved
+\begin{gather*}
+    x = r\cos{\theta}\\
+    y = r\sin{\theta}\\
+    z = z\\
+    dx\,dy\,dz = r\,dr\,d\theta\,dz
+\end{gather*}
+Vanlige grenser er
+\begin{gather*}
+    0 \leq r \leq R\\
+    0 \leq \theta \leq 2\pi\\
+    0 \leq z \leq H
+\end{gather*}
+der R er radien til sylinderen og H er høyden.
+
+
+\subsection{Kulekoordinater}
+Kulekoordinater er vanlige å bruke dersom en har å gjøre med kuleformede objekter i $\mathbb{R}^3$. $\rho$ bestemmer lengden fra origo, $\theta$ bestemmer vinkelen i $xy$-planet og $\phi$ bestemmer vinkelen i $zr$-planet. Det omgjøres fra kartesiske koordinater ved
+\begin{gather*}
+    x = \rho\sin{\phi}\cos{\theta}\\
+    y = \rho\sin{\phi}\sin{\theta}\\
+    z = \rho\cos{\phi}\\
+    dx\,dy\,dz = \rho^2\sin(\phi)\,d\rho\,d\theta\,d\phi
+\end{gather*}
+Vanlige grenser er
+\begin{gather*}
+    0 \leq \rho \leq R\\
+    0 \leq \theta \leq 2\pi\\
+    0 \leq \phi \leq \pi
+\end{gather*}
+der R er radien til kulen.
+
+
+\subsection{Jacobi-determinanten}
+Gitt en koordinattransformasjon
+\[T(u, v) = (x(u, v),\,y(u, v))\]
+så er Jacobi-determinanten til $T$ definert som
+\begin{align*}
+    J(u, v) = \frac{\partial (x, y)}{\partial (u, v)} =
+    \begin{vmatrix}
+        \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v}\\\\
+        \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+    \end{vmatrix}
+    = \frac{\partial x}{\partial u} \frac{\partial y}{\partial v} - \frac{\partial x}{\partial v} \frac{\partial y}{\partial u}
+\end{align*}
+og
+\[dA = dx\,dy = \left| J(u, v) \right| du\,dv\]
+Gitt en koordinattransformasjon
+\[T(u, v, w) = (x(u, v, w),\,y(u, v, w),\,z(u, v, w))\]
+så er Jacobi-determinanten til $T$ definert som
+\begin{align*}
+    J(u, v, w) = \frac{\partial (x, y, z)}{\partial (u, v, w)} =
+    \begin{vmatrix}
+        \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} & \frac{\partial x}{\partial w}\\\\
+        \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} & \frac{\partial y}{\partial w}\\\\
+        \frac{\partial z}{\partial u} & \frac{\partial z}{\partial v} & \frac{\partial z}{\partial w}
+    \end{vmatrix}
+\end{align*}
+og
+\[dV = dx\,dy\,dz = \left| J(u, v, w) \right| du\,dv\,dw\]
+
+\subsubsection{Eksempel: Polarkoordinater}
+La
+\[T(r, \theta) = (r\cos{\theta}, r\sin{\theta})\]
+da har vi at
+\[J(r, \theta) = \frac{\partial (x, y)}{\partial (r, \theta)} =
+    \begin{vmatrix}
+        \frac{\partial (r\cos{\theta})}{\partial r} & \frac{\partial (r\cos{\theta})}{\partial \theta}\\\\
+        \frac{\partial (r\sin{\theta})}{\partial r} & \frac{\partial (r\sin{\theta})}{\partial \theta}
+    \end{vmatrix}
+    =
+    \begin{vmatrix}
+        \cos{\theta} & -r\sin{\theta}\\
+        \sin{\theta} & r\cos{\theta}
+    \end{vmatrix}
+    = r
+    \]
+og
+\[dx\,dy = r\,dr\,d\theta\]
+
+\subsubsection{Eksempel: Oppgave 5 Høst 2018}
+Vi ønsker å gjøre transformasjonen $u = x^2 + y^2$, $v = \frac{y^2}{x}$. Merk at det her er $u$ og $v$ som er uttrykt ved $x$ og $y$. Dette gir inverstransformasjonen
+\[T^{-1}(x, y) = (x^2+y^2, \frac{y^2}{x})\]
+da har vi at
+\[J'(x, y) = \frac{\partial (u, v)}{\partial (x, y)} =
+    \begin{vmatrix}
+        \frac{\partial (x^2 + y^2)}{\partial x} & \frac{\partial (x^2 + y^2)}{\partial y}\\\\
+        \frac{\partial (\frac{y^2}{x})}{\partial x} & \frac{\partial (\frac{y^2}{x})}{\partial y}
+    \end{vmatrix}
+    =
+    \begin{vmatrix}
+        2x & 2y\\
+        -\frac{y^2}{x^2} & \frac{2y}{x}
+    \end{vmatrix}
+    = 2y \left(2 + \frac{y^2}{x^2}\right)
+    \]
+der $J'$ er Jacobi-determinanten til inverstransformasjonen $T^{-1}$ Igjen, merk at vi har gjort transformasjonen "andre veien", så
+\[du\,dv = |J'(x, y)|\,dx\,dy \,\implies\, dx\,dy = \frac{1}{2y \left(2 + \frac{y^2}{x^2}\right)}\,du\,dv\]
+
+
+
+\clearpage
+
+
+
+
+\section{Kurver}
+
+
+\subsection{Buelengde}
+La  $C$ være en glatt kurve parametrisert ved $r(t)$, $a\leq t \leq b$. Da er lengden av $C$  gitt ved
+\[S = \int_a^b \left| r'(t) \right| dt\]
+
+
+\subsection{Enhetstangent, enhetsnormal og krumning}
+La $r(t)$ være en glatt parametrisering av en kurve $C$.
+\begin{itemize}
+    \item Enhetstangent: $\hat{T}(t) = \frac{r'(t)}{\left| r'(t) \right|}$
+    \item Enhetsnormal: $\hat{N}(t) = \frac{\hat{T}'(t)}{\left| \hat{T}'(t) \right|}$
+    \item Krumning: $K(t) = \frac{\left| \hat{T}'(t) \right|}{\left| r'(t) \right|}$
+\end{itemize}
+For normalvektor til et plan, se \ref{Tangentplan og normalvektor}
+
+\subsection{Areal av omdreiningslegeme}
+La $C$ være en kurve parametrisert ved $r(t) = (X(t),\,Y(t))$, $a \leq t \leq b$. \\\\
+Overflatearealet $A_x$ som fremkommer ved å dreie $C$ om $x$-aksen er gitt ved
+\[A = 2\pi \int_a^b \left| Y(t) \right| \left| r'(t) \right| dt \]
+Overflatearealet $A_y$ som fremkommer ved å dreie $C$ om $y$-aksen er gitt ved
+\[A = 2\pi \int_a^b \left| X(t) \right| \left| r'(t) \right| dt \]
+
+
+\subsection{Areal omsluttet av parametrisk kurve}
+La $C$ være en kurve parametrisert ved $r(t) = (X(t), Y(t))$, $a \leq t \leq b$, og anta at $X(t)$ er deriverbar og $Y(t)$ er kontinuerlig på $\left[ a, b \right]$. La $A$ være arealet begrenset av $C$, $x$-aksen og linjene $x=X(a)$ og $x=X(b)$. Da gjelder
+\begin{itemize}
+    \item Hvis $X' \cdot Y \geq 0$ på $\left[ a, b \right]$, så er $A = \int_a^b X'(t)\,Y(t)\,dt$
+    \item Hvis $X' \cdot Y \leq 0$ på $\left[ a, b \right]$, så er $A = -\int_a^b X'(t)\,Y(t)\,dt$
+\end{itemize}
+
+
+\clearpage
+
+
+\section{Funksjoner av flere variable}
+
+
+\subsection{Gradient}
+Gradienten til et skalarfelt er et vektorfelt der vektoren i et hvert punkt peker i retningen til den største økningen i skalarfeltet. Lengden av vektoren er et uttrykk for endringen til skalarfeltet i retning av vektoren.\\\\
+La $F$ være et skalarfelt i $\mathbb{R}^2$. Da er $\nabla F$ gitt ved
+\[\nabla F(x,y) = \left(\frac{\partial F}{\partial x},\,\frac{\partial F}{\partial y} \right)\]
+La $F$ være et skalarfelt i $\mathbb{R}^3$. Da er $\nabla F$ gitt ved
+\[\nabla F(x,y,z) = \left(\frac{\partial F}{\partial x},\,\frac{\partial F}{\partial y},\,\frac{\partial F}{\partial z} \right)\]
+
+
+\subsection{Retningsderivert}
+La $f$ være deriverbar i  $a \in D_f$ og la u være en retningsvektor. Da den retningsderiverte gitt ved
+\[D_{u} f(a) = \nabla f(a) \cdot u\]
+
+\subsubsection{Egenskaper ved den retningsderiverte}
+Husk at prikkproduktet mellom to vektorer kan uttrykkes ved vinkelen $\alpha$ mellom dem:
+\[D_{u} f(a) = \nabla f(a) \cdot u = \left| \nabla f(a) \right| \left| u \right| \cos{\alpha} = \left| \nabla f(a) \right| \cos{\alpha}\]
+Dette gir følgende egenskaper:
+\begin{itemize}
+    \item $f$ øker mest når $\alpha = 0$, altså når $u = \frac{\nabla f(a)}{\left| \nabla f(a) \right|}$.
+    \item $f$ minker mest når $\alpha = \pi$, altså når $u = - \frac{\nabla f(a)}{\left| \nabla f(a) \right|}$.
+    \item $f$ endres ikke når $\alpha = \pi / 2$, altså når $u \cdot \nabla f(a) = 0$.
+\end{itemize}
+
+
+\subsection{Tangentplan og normalvektor} \label{Tangentplan og normalvektor}
+Likningen for tangentplanet til $z = f(x, y)$ i punktet $(a, b, f(a, b))$ er gitt ved
+\[z = f(a, b) + \frac{\partial f}{\partial x}(a, b)(x - a) + \frac{\partial f}{\partial y}(a, b)(y - b)\]
+Normalen til $z = f(x, y)$ i punktet $(a, b)$ er gitt ved
+\[\hat{N} = \left( \frac{\partial f}{\partial x}(a, b),\,\frac{\partial f}{\partial y}(a, b),\,-1 \right)\]
+Gitt tre punkter $A$, $B$ og $C$, er normalen til planet som dannes av punktene gitt ved kryssproduktet av to vektorer mellom punktene
+\[\hat{N} = \overrightarrow{AB} \times \overrightarrow{AC}\]
+
+\subsection{Å finne og klassifisere punkter}
+
+\subsubsection{Kritiske punkter}
+Kritiske punkter for $f$ er punkter der
+\begin{itemize}
+    \item $\nabla f = \overrightarrow{0}$
+    \item Singulære punkter: der $\nabla f$ er udefinert
+\end{itemize}
+Merk! Dersom en skal finne ekstremalpunkter på et lukket område, må en også undersøke randpunktene. Dette gjøres ved parametrisering av randen eller ved Lagranges multiplikatormetode med randen som betingelse.\\\\
+Indre kritiske punkter (ikke randpunkter) kan klassifiseres ved andrederiverttesten.
+
+\subsubsection{Lagranges multiplikatormetode}
+En metode for bestemmelse av ekstremalverdier av en funksjon med flere variabler når disse må oppfylle en eller flere bibetingelser.\\\\
+Eksempel: Gitt $f(x, y) = 4x + y$, med betingelse $g(x, y) = x^2 + y^2 - 4 = 0$
+\begin{enumerate}
+    \item La Lagrangefunksjonen $L(x, y, \lambda) = f(x, y) + \lambda g(x, y) = 4x + y + \lambda x^2 + \lambda y^2 - 4 \lambda$
+    \item Finn løsninger av likningssettet $\nabla L = \overrightarrow{0}$
+\end{enumerate}
+Løsningene vil være ekstremalpunkter for $f$. Gitt flere betingelser legger man dem til i $L$, med hver sin variabel.
+
+\subsubsection{Andrederiverttesten}
+La $f(x, y)$ være en funksjon av to variabler. Anta at $(a, b)$ er et indre kritisk punkt og at de andrederiverte av f er kontinuerlige i nærheten av $(a, b)$. Sett
+\begin{align*}
+    A &= \frac{\partial^2 f}{\partial x^2} (a, b),\\
+    B &= \frac{\partial^2 f}{\partial x\,\partial y} (a, b) = \frac{\partial^2 f}{\partial x\,\partial y} (a, b)\\
+    C &= \frac{\partial^2 f}{\partial y^2} (a, b),
+\end{align*}
+og
+\[D = AC-B^2\]
+Da gjelder:
+\begin{enumerate}
+    \item Hvis $D < 0$, så er $(a, b)$ et sadelpunkt.
+    \item Hvis $D > 0$ og $A > 0$, så er $(a, b)$ et lokalt minimumspunkt.
+    \item Hvis $D > 0$ og $A < 0$, så er $(a, b)$ et lokalt maksimumspunkt.
+    \item Hvis $D = 0$ gir testen ingen konklusjon.
+\end{enumerate}
+
+
+\subsection{Linjeintegral}
+Linjeintegralet av et skalarfelt $f = f(x, y, z)$ langs en kurve $C \subset \mathbb{R}^3$ gitt ved en glatt parametrisering $r(t)$, $t \in [a,b]$ er gitt ved
+\[\int_c f\,ds = \int_a^b f(r(t))\,\left| r'(t) \right| dt\]
+\subsubsection{Lengde av kurve}
+Det følger at lengden av en kurve $C \subset \mathbb{R}^3$ gitt ved en glatt parametrisering $r(t)$, $t \in [a,b]$ er gitt ved
+\[\int_c 1\,ds = \int_a^b \left| r'(t) \right| dt\]
+\subsubsection{Masse av streng}
+Dersom $\delta$ angir massetetthet per lengdeenhet, og kurven $C \subset \mathbb{R}^3$ gitt ved en glatt parametrisering $r(t)$, $t \in [a,b]$ angir posisjonen til en streng i rommet, er massen til strengen gitt ved
+\[m = \int_c \delta\,ds = \int_a^b \delta (r(t))\,\left| r'(t) \right| dt\]
+
+\subsection{Flateintegral}
+Flateintegralet av et skalarfelt $f = f(x, y, z)$ over en flate $S \subset \mathbb{R}^3$ gitt ved en parametrisering $r(u, v)$, $u_0 \leq u \leq u_1$, $v_0 \leq v \leq v_1$ er gitt ved
+\[\iint_S f\,dS=\int_{v_0}^{v_1}\int_{u_0}^{u_1} f(r(u,v)) \left| \frac{\partial r}{\partial u} \times \frac{\partial r}{\partial v} \right|\,du\,dv\]
+der
+\begin{align*}
+    \frac{\partial r}{\partial u} &= \left( \frac{\partial x(u, v)}{\partial u},\, \frac{\partial y(u, v)}{\partial u},\, \frac{\partial z(u, v)}{\partial u} \right)\\
+    \frac{\partial r}{\partial v} &= \left( \frac{\partial x(u, v)}{\partial v},\, \frac{\partial y(u, v)}{\partial v},\, \frac{\partial z(u, v)}{\partial v} \right)
+\end{align*}
+\subsubsection{Areal av flate}
+Det følger at arealet av en flate $S \subset \mathbb{R}^3$ gitt ved en parametrisering $r(x, y) = (x, y, f(x, y))$, $x_0 \leq x \leq x_1$, $y_0 \leq y \leq y_1$ er gitt ved
+\begin{align*}
+    \iint_S 1\,dS &= \int_{y_0}^{y_1}\int_{x_0}^{x_1} \left| \frac{\partial r}{\partial x} \times \frac{\partial r}{\partial y} \right|\,dx\,dy\\
+    &= \int_{y_0}^{y_1}\int_{x_0}^{x_1} \sqrt{1 + \left(\frac{\partial f}{\partial x}\right)^2 + \left(\frac{\partial f}{\partial y}\right)^2}\,dx\,dy
+\end{align*}
+\subsubsection{Masse av flate}
+Dersom $\delta = \delta(x, y, z)$ angir massetetthet per lengdeenhet, og flaten $S \subset \mathbb{R}^3$ er gitt ved en parametrisering $r(x, y) = (x, y, f(x, y))$, $x_0 \leq x \leq x_1$, $y_0 \leq y \leq y_1$, er massen av flaten gitt ved
+\begin{align*}
+    \iint_S \delta\,dS &= \int_{y_0}^{y_1}\int_{x_0}^{x_1} \delta(x, y, f(x, y))\, \left| \frac{\partial r}{\partial x} \times \frac{\partial r}{\partial y} \right|\,dx\,dy\\
+    &= \int_{y_0}^{y_1}\int_{x_0}^{x_1} \delta(x, y, f(x, y))\, \sqrt{1 + \left(\frac{\partial f}{\partial x}\right)^2 + \left(\frac{\partial f}{\partial y}\right)^2}\,dx\,dy
+\end{align*}
+
+\subsection{Middelverdisetningen}
+Anta at $f(x, y)$ er kontinuerlig på et lukket, begrenset og sammenhengende område $D \in \mathbb{R}^2$. Da finnes det et punkt $(x_0, y_0) \in D$ der $f$ tar sin middelverdi (gjennomsnittsverdi), gitt ved
+\[\overline{f} = f(x_0, y_0) = \frac{1}{areal(D)}\,\iint_D f(x, y)\,dA\]
+
+
+\subsection{Massesenter}
+Gitt en masse $m = f(\delta)$, er massesenteret gitt ved
+\[(\overline{x}, \overline{y}, \overline{z}) = \left( \frac{f(x\delta)}{m}, \frac{f(y\delta)}{m}, \frac{f(z\delta)}{m} \right)\]
+
+
+\clearpage
+
+
+
+
+\section{Vektorfelt}
+
+
+\subsection{Divergens}
+Divergens gir størrelsen til en kilde eller et sluk i et gitt punkt i et vektorfelt, i form av en skalar med fortegn.\\\\
+La $F(x, y) = \left(f_1(x, y), f_2(x, y)\right)$. Da er divergensen gitt ved
+\[\nabla \cdot F = \frac{\partial f_1}{\partial x} + \frac{\partial f_2}{\partial y}\]
+La $F(x, y, z) = \left(f_1(x, y, z), f_2(x, y, z), f_3(x, y, z)\right)$. Da er divergensen gitt ved
+\[\nabla \cdot F = \frac{\partial f_1}{\partial x} + \frac{\partial f_2}{\partial y} + \frac{\partial f_3}{\partial z}\]
+
+\subsubsection{Divergensteoremet} \label{Divergensteoremet}
+La $D$ være et regulært område i $\mathbb{R}^3$ med rand $S = \partial D$ som er en orientert og lukket flate, der enhetsnormalen $\hat{N}$ peker ut av $D$. Hvis $F$ er et glatt vektorfelt definert på $D$, så er
+\[\iiint_D \nabla \cdot F\,dV = \iint_S F \cdot \hat{N}\,dS\]
+
+\subsubsection{Divergensteoremet i planet}
+La $R$ være et regulært område i $xy$-planet. Anta at randen $C = \partial R$ består av en eller flere glatte, enkle, lukkede kurver som er positivt orienterte med hensyn på $R$. La $\hat{N}$ være den ytre enhetsnormalen på $C$. Hvis $F(x, y)=(f_1(x, y), f_2(x, y))$ er et glatt vektorfelt definert på $R$, så er
+\[\iint_R \nabla \cdot F\,dA = \oint_C F \cdot \hat{N}\,ds\]
+
+
+\subsection{Curl}
+Curl beskriver den infinitesimale rotasjonen av et vektorfelt, i form av en vektor i ethvert punkt i feltet. Egenskapene til denne vektoren (lengden og retningen) beskriver rotasjonen i punktet.\\\\
+La $F(x, y) = \left(f_1(x, y), f_2(x, y)\right)$. Da er curlen gitt ved
+\[\nabla \times F = \left(0, 0, \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} \right)\]
+La $F(x, y, z) = \left(f_1(x, y, z), f_2(x, y, z), f_3(x, y, z)\right)$. Da er curlen gitt ved
+\[\nabla \times F = \left( \frac{\partial f_3}{\partial y} - \frac{\partial f_2}{\partial z}, \frac{\partial f_1}{\partial z} - \frac{\partial f_3}{\partial x}, \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} \right)\]
+
+\subsubsection{Stokes' teorem} \label{Stokes' teorem}
+La $S$ være en stykkevis glatt, orientert flate i $\mathbb{R}^3$ med enhetsnormal $\hat{N}$, der randen til $S$, $C = \partial S$, består av en eller flere stykkevis glatte, lukkede kurver med orientering bestemt av orienteringen til $S$. Hvis $F$ er glatt på en åpen mengde som inneholder $S$, så er
+\[\oint_C F \cdot dr = \iint_S (\nabla \times F) \cdot \hat{N}\,dS\]
+
+\subsubsection{Greens Teorem (Stokes' teorem i planet)} \label{Greens Teorem}
+La $S$ være et regulært område i $xy$-planet. Anta at randen $C$ består av en eller flere stykkevis glatte, enkle, lukkede kurver med positiv orientering med hensyn på $R$. Hvis $F(x, y) = ((f_1(x, y), f_2(x, y))$ er et glatt vektorfelt definert på $R$, så er
+\begin{align*}
+    \iint_R \left( \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} \right) &= \oint_C f_1(x, y)\,dx + f_2(x, y)\,dy\\
+    &= \oint_C F \cdot dr
+\end{align*}
+
+
+\subsection{Konservative vektorfelt}
+Et vektorfelt $F$ i et område $D \subseteq \mathbb{R}^3$ er konservativt hvis og bare hvis det finnes et skalarfelt $\phi$ slik at
+\[F(x,y,z) = \nabla \phi(x, y, z)\]
+for alle $(x, y, z) \in D$. Vi kaller $\phi$ en potensialfunksjon for $F$ i $D$.\\\\
+Det er verdt å merke seg at for et konservativt vektorfelt $F$ så er $\nabla \times F = \overrightarrow{0}$\\\\
+For et konservativt vektorfelt $F$ med en potensialfunksjon $\phi$, og en kurve $C$ parameterisert ved $r(t)$, $a \leq t \leq b$ gjelder
+\[\int_C F \cdot dr = \phi(b) - \phi(a)\]
+dette henger sammen ved at for konservative vektorfelt er integralet uavhengig av veivalget \textit{mellom} start- og endepunkt av kurven.
+
+\subsection{Linjeintegral i vektorfelt}
+Linjeintegralet av et vektorfelt $F$ langs en kurve $C \subset \mathbb{R}^3$ gitt ved en glatt parametrisering $r(t)$, $t \in [a, b]$ er gitt ved
+\[\int_C F \cdot dr = \int_a^b F(r(t)) \cdot \frac{\partial r}{\partial t}\,dt\]
+Om C er lukket (eller "kan lukkes") kan Stokes' Teorem \ref{Stokes' teorem} eller Greens Teorem \ref{Greens Teorem} være nyttig.\\\\
+Alternativt kan linjeintegralet uttrykkes ved enhetstangenten til $r$, $\hat{T}$
+\[\int_C F \cdot dr = \int_C F \cdot \hat{T}\,ds\]
+\subsection{Flateintegral i vektorfelt}
+For et vektorfelt $F$ er fluksen gjennom en orientert flate $S$ gitt ved
+\[\iint_S F \cdot \hat{N}\,dS\]
+der $\hat{N}$ er enhetsnormalen til $S$ i positiv retning i forhold til orienteringen av $S$.\\\\
+Om S er lukket (eller "kan lukkes") kan Divergensteoremet \ref{Divergensteoremet} være nyttig.
+
+
+\clearpage
+
+
+
+
+\end{document}
