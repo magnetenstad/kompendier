@@ -12,14 +12,20 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{tikz}
+\usepackage{minted}
+\usepackage{color}
+\usepackage{courier}
+\usemintedstyle{borland}
 
 % Number sets
 \usepackage{amsfonts}
 
 \title{Objektorientert programmering}
-\author{Magne Tenstad}
+\author{Magne Tenstad \\ Karin Syversveen Lie}
 
 \begin{document}
+
 
 \maketitle
 
@@ -37,4 +43,18 @@ adlkajølsd
 
 \subsection{Iterable and iterator}
 
+\section{Streams}
+Dette er en guide til streams
+
+\subsection{Telle i stream}
+
+\begin{minted}[]{java}
+public int timesEaten(String meal) {
+    return (int) orders.stream()
+        .filter(m -> m.getMeal().equals(meal))
+        .count();
+}
+\end{minted}
+
 \end{document}
+

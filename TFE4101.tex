@@ -47,7 +47,11 @@
         Spenning    & U & V, volt \\
         Energi      & W & J, joule \\
         Effekt      & P & W, watt \\
-        Konduktans  & G & S, siemens
+        Konduktans  & G & S, siemens \\
+        Fluks       & $\Phi$ & Wb, weber \\
+        Induktans   & L & H, henry \\
+        Kapitans    & C & F, farad \\
+        Feltstyrke  & $\epsilon$ & V/m
     \end{tabular}
 \end{table}
 
@@ -77,6 +81,64 @@ La $k$ være en komponent, $U$ være spenningen over $k$ og $I$ være strømmen 
     \item Hvis strømretningen oppfyller den passive fortegnskonvensjonen: $P = U \cdot I$
     \item Hvis strømretningen ikke oppfyller den passive fortegnskonvensjonen: $P = - U \cdot I$
 \end{itemize}
+
+\subsubsection{Resistans}
+Total resistans i seriekobling er gitt ved
+\begin{align*}
+    R_{ser} &= \sum_i R_i \\
+    &= R_1 + R_2 + ... + R_n
+\end{align*}
+Total resistans i parallellkobling er gitt ved
+\begin{align*}
+    R_{par} &= \left( \sum_i \frac{1}{R_i} \right)^{-1} \\
+    &= \left(\frac{1}{R_1} + \frac{1}{R_2} + ... + \frac{1}{R_n}\right)^{-1}
+\end{align*}
+Dersom kretsen ikke kan beskrives ved en kombinasjon av serie og parallellkoblinger, må det gjøres en tilnærming. Eks: H20 Oppgave 1.
+
+
+\subsubsection{Strøm}
+I en seriekobling er strømmen konstant.\\\\
+La $I$ være den totale strømmen gjennom en parallellkobling, $R$ være summen av resistansene i koblingen og $R'$ være resistansen i en gren. Da er strømmen gjennom grenen gitt ved
+\[I' = I \, \frac{R - R'}{R}\]
+
+
+\subsection{Spole}
+Ved $t = 0$ er det kontinuitet i spolestrømmen. Ved $t \rightarrow \infty \implies u(t) \rightarrow 0$\\\\
+Fluksen gjennom en spole er gitt ved
+\[\Phi = L \cdot I\]
+Spenning
+\[u(t) = L \cdot i\,'(t)\]
+
+\subsection{Kondensator}
+Spenningsdifferansen i en kondensator produserer et elektrisk felt.
+Feltstyrken er gitt ved
+\[\epsilon = \frac{U}{d}\]
+der $d$ er avstanden.\\\\
+Ved $t = 0$ er det kontinuitet i kondensatorspenning. Ved $t \rightarrow \infty \implies i(t) \rightarrow 0$\\\\
+Strøm
+\[i(t) = C \cdot u\,'(t)\]
+Spenning
+\[u(t) = U_0+\frac{1}{C}\,\int_0^t i(x)\,dx\]
+
+\subsubsection{Kapitans}
+Er gitt ved
+\[C = \frac{Q}{U}\]
+Total kapitans i seriekobling er gitt ved
+\begin{align*}
+    C_{ser} &= \left( \sum_i \frac{1}{C_i} \right)^{-1} \\
+    &= \left(\frac{1}{C_1} + \frac{1}{C_2} + ... + \frac{1}{C_n}\right)^{-1}
+\end{align*}
+Total kapitans i parallellkobling er gitt ved
+\begin{align*}
+    C_{par} &= \sum_i C_i \\
+    &= C_1 + C_2 + ... + C_n
+\end{align*}
+
+
+\subsection{Superposisjonsmetoden}
+Kan brukes for lineære mål som strøm og spenning, men ikke kvadratiske mål som effekt.
+
+
 
 
 
