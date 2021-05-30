@@ -35,26 +35,272 @@
 
 \clearpage
 
-\section{Common Java Interfaces}
-\subsection{Predicate}
-asdlkajsødlk a
-sdalksdjølakd
-adlkajølsd
 
-\subsection{Iterable and iterator}
+\section{Huskeliste}
+Etter å ha skrevet en klasse er det nyttig å sjekke at man har:
+\begin{enumerate}
+    \item Arvet og/eller implementert riktige superklasser/grensesnitt.
+    \item Valgt riktig av class, abstract class og interface.
+    \item Gjort felter private (eller protected ved arv).
+    \item Gjort felter som ikke skal endres final.
+    \item Initialisert felter som ikke skal være null, enten ved deklarasjon eller i konstruktør.
+    \item For hver metode:
+    \begin{enumerate}
+        \item Gjort private dersom den bare brukes internt, public ellers.
+        \item Validert argumentene.
+        \item Kastet hensiktsmessige exceptions.
+        \item Innkapsling: returnere \textit{kopi av} f.eks. liste
+        \item Gjort static dersom den er helt uavhengig av objektets tilstand.
+        \item Skrevet @Override dersom den overskriver.
+        \item Gjort abstract dersom den ikke er implementert og klassen er abstract.
+    \end{enumerate}
+    \item Fikset alle error (rød strek).
+    \item Testet metodene vha. en main-metode.
+    \item Importert riktig og fjernet ubrukte importeringer.
+\end{enumerate}
 
-\section{Streams}
-Dette er en guide til streams
+\section{Java Grensesnitt}
 
-\subsection{Telle i stream}
+\subsection{Collection og List}
 
+
+\subsection{Iterator og Iterable}
+
+\subsubsection{Metoder}
+Iterator-grensesnittet har metodene
+\begin{itemize}
+    \item boolean hasNext();
+    \item T next();
+\end{itemize}
+Iterable-grensesnittet har metoden
+\begin{itemize}
+    \item Iterator$<$T$>$ iterator();
+\end{itemize}
+Man kan altså alltid får en Iterator fra en Iterable.
+
+\subsubsection{Iterasjon}
+
+Å iterere gjennom en iterator
 \begin{minted}[]{java}
-public int timesEaten(String meal) {
-    return (int) orders.stream()
-        .filter(m -> m.getMeal().equals(meal))
-        .count();
+Iterator<T> iterator;
+while (iterator.hasNext()) {
+    T element = iterator.next();
 }
 \end{minted}
+Å iterere gjennom en iterable
+\begin{minted}[]{java}
+Iterable<T> iterable;
+for (T element : iterable) {
+
+}
+\end{minted}
+
+\section{Java Funksjonelle Grensesnitt}
+
+\subsection{Predicate}
+// TODO
+
+\subsection{Comparator og Comparable}
+Klasser som implementerer Comparator-grensesnittet har en metode int compare().\\Eksempel:
+\begin{minted}[]{java}
+public int compare(Person o1, Person o2){
+    return o1.getAge()- o2.getAge()
+}
+\end{minted}
+Man kan også definere en Comparator som en funksjon:
+\begin{minted}[]{java}
+Comparator<Book> comparator = (book1, book2) ->
+    book1.getName().compareTo(book2.getName());
+\end{minted}
+Klasser som implementerer Comparable har en metode compareTo(). En Collection med objekter som er Comparable kan sorteres ved Collections.sort(collection). String og Integer er eksempler på klasser som er Comparable. 
+
+
+\section{Java Klasser}
+
+\subsection{Scanner}
+\subsubsection{Lese fra fil}
+\begin{minted}[]{java}
+File file = new File(filename);
+try {
+    Scanner scanner = new Scanner(file);
+    while(scanner.hasNextLine()) {
+        String line = scanner.nextLine();
+        // Do something with the line
+    }
+    scanner.close();
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
+}
+\end{minted}
+
+\subsubsection{Lese fra stream (og user input)}
+\begin{minted}[]{java}
+Stream stream = System.in; // For user input
+Scanner scanner = new Scanner(stream);
+while(scanner.hasNextLine()) {
+    String line = scanner.nextLine();
+    // Do something with the line
+}
+\end{minted}
+
+\subsection{String}
+\subsubsection{Strengmanipulasjon}
+Man kan dele opp strenger ved bruk av s.substring(pos).
+
+\begin{itemize}
+    \item String s.substring(pos)
+    \item boolean s.endsWith("]")
+    \item boolean s.startsWith("[")
+    \item String[] s.split(",")
+\end{itemize}
+
+Skal man samle sammen strenger bruk StringBuilder. Her kan man ta builder.append(s)
+
+
+\subsection{Random}
+\subsubsection{Math.random()}
+Math.random() returnerer en tilfeldig double mellom 0 og 1.
+
+\subsubsection{Random double $\in [min,\,max]$}
+\begin{minted}[]{Java}
+public static double random_range(double min, double max) {
+    return Math.random() * (max - min + 1) + min;
+}
+\end{minted}
+\subsubsection{Random int $\in [min,\,max]$}
+\begin{minted}[]{Java}
+public static int random_range(int min, int max) {
+    return (int) (Math.random() * (max - min + 1)) + min;
+}
+\end{minted}
+
+
+
+\subsection{Stream}
+Ved hjelp av streams kan man forenkle en rekke problemer som har å gjøre med sett av objekter.\\
+Stream fra Collection:
+\begin{minted}[]{Java}
+    Collection<Object> objects;
+    objects.stream()...
+\end{minted}
+Stream fra array:
+\begin{minted}[]{Java}
+    Object[] objects;
+    Arrays.stream(objects)...
+\end{minted}
+
+\subsubsection{collect - fra liste til stream og tilbake}
+\begin{minted}[]{java}
+books = books.stream()
+    .collect(Collectors.toList());
+\end{minted}
+
+
+\subsubsection{filter - bestemme et kriterium}
+\begin{minted}[]{java}
+List<Book> longBooks;
+longBooks = books.stream()
+    .filter(book -> book.getPages() > 500)
+    .collect(Collectors.toList());
+\end{minted}
+
+
+\subsubsection{findAny - hente ut et element}
+\begin{minted}[]{java}
+Book myBook;
+Person me;
+myBook = books.stream()
+    .filter(book -> book.getOwner() == me)
+    .findAny()
+    .orElse(null);
+\end{minted}
+
+
+\subsubsection{count - telle antall i streamen}
+\begin{minted}[]{java}
+int numberOfBooksIOwn;
+Person me;
+numberOfBooksIOwn = (int) books.stream()
+    .filter(book -> book.getOwner() == me)
+    .count();
+\end{minted}
+
+
+\subsubsection{sorted - sortere en stream}
+\begin{minted}[]{java}
+Comparator<Book> comparator = (book1, book2) -> {
+    return book1.getName().compareTo(book2.getName());
+};
+List<Book> sortedBooks;
+sortedBooks = books.stream()
+    .sorted(comparator)
+    .collect(Collectors.toList());
+\end{minted}
+
+
+\subsubsection{anyMatch}
+\begin{minted}[]{java}
+boolean doesHarryPotterExist;
+doesHarryPotterExist = books.stream()
+    .anyMatch(book -> book.getName().equals("Harry Potter"));
+\end{minted}
+
+\section{Teknikker}
+
+\subsection{Observeratør og observert}
+Denne teknikken sørger for at informasjon oppdateres i nødvendige objekter slik at den er konsistent. Man lager gjerne en interface for observatøren. Merk: \textit{Observer} og \textit{listener} omtaler det samme.\\\\
+Nyttige metoder i observert:
+\begin{itemize}
+    \item addListener
+    \item removeListener
+    \item notifyListeners
+\end{itemize}
+Nyttige metoder i observatør:
+\begin{itemize}
+    \item receiveUpdate
+\end{itemize}
+
+
+\section{JUnit 5 - Tester}
+Importering av junit skal gjerne være på formen:
+\begin{minted}[]{java}
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.*;
+\end{minted}
+
+\subsection{Metoder}
+\begin{itemize}
+    \item assertTrue
+    \item assertFalse
+    \item assertEquals
+    \item assertNotEquals
+    \item assertThrows
+    \item assertNull
+    \item fail
+\end{itemize}
+
+\subsection{Annotasjoner}
+\begin{itemize}
+    \item @BeforeAll
+    \item @BeforeEach
+    \item @Test
+    \item @AfterEach
+    \item @AfterAll
+\end{itemize}
+
+\section{FXML}
+\subsection{Gettere og settere}
+For de fleste klasser i JavaFX gjelder det at en henter verdi/tekst ved .getValue()/.getText() og setter verdi/tekst ved .setValue()/.setText().
+
+\subsection{Rullegardin}
+Hvis det er flere valgmuligheter så må man bruke en metode for å hente den
+
+Eksempel
+\begin{minted}[]{java}
+char item = typeSelector.getSelectionModel().getSelectedItem();
+\end{minted}
+
+
 
 \end{document}
 

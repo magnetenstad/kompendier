@@ -57,8 +57,8 @@
 
 
 \subsubsection{Passiv fortegnskonvensjon}
-Gjennom en kilde går strømretningen inn på negativ terminal og ut fra positiv terminal. Gjennom en motstand går strømretningen inn på positiv terminal og ut fra negativ terminal.
-
+Når referanseretningen for strømmen gjennom et kretselement er i samme retning
+som referansespenningsfallet over elementet (inn på positiv terminal, ut på negativ), skal positivt fortegn brukes i uttrykk som relaterer spenningen til strømmen. Ellers skal negativt fortegn brukes.
 
 \subsubsection{Ohms lov}
 Proposjonalitet mellom spenning over og strøm gjennom en motstand.
@@ -75,13 +75,6 @@ Konduktans angir ledningsevne, og er gitt ved
 Konduktans kan være praktisk der resistansen er og skal være lav.
 
 
-\subsubsection{Effekt og passiv fortegnskonvensjon}
-La $k$ være en komponent, $U$ være spenningen over $k$ og $I$ være strømmen gjennom $k$. Effekten forbrukt i komponenten er gitt ved
-\begin{itemize}
-    \item Hvis strømretningen oppfyller den passive fortegnskonvensjonen: $P = U \cdot I$
-    \item Hvis strømretningen ikke oppfyller den passive fortegnskonvensjonen: $P = - U \cdot I$
-\end{itemize}
-
 \subsubsection{Resistans}
 Total resistans i seriekobling er gitt ved
 \begin{align*}
@@ -96,29 +89,37 @@ Total resistans i parallellkobling er gitt ved
 Dersom kretsen ikke kan beskrives ved en kombinasjon av serie og parallellkoblinger, må det gjøres en tilnærming. Eks: H20 Oppgave 1.
 
 
-\subsubsection{Strøm}
+\subsection{Strømdeling}
 I en seriekobling er strømmen konstant.\\\\
-La $I$ være den totale strømmen gjennom en parallellkobling, $R$ være summen av resistansene i koblingen og $R'$ være resistansen i en gren. Da er strømmen gjennom grenen gitt ved
-\[I' = I \, \frac{R - R'}{R}\]
+La $I$ være den totale strømmen gjennom en parallellkobling, $R_{par}$ være den totale resistansen i koblingen og $R'$ være resistansen i en gren. Da er strømmen gjennom grenen gitt ved
+\[I' = I \, \frac{R_{par}}{R'}\]
 
+\subsection{Spenningsdeling}
+I en parallellkobling er spenningen konstant.\\\\
+La $U$ være den totale strømmen gjennom en seriekobling, $R_{ser}$ være den totale resistansen i koblingen og $R'$ være en resistansen til en komponent. Da er spenningen over komponenten gitt ved
+\[U' = U \, \frac{R'}{R_{ser}}\]
 
 \subsection{Spole}
-Ved $t = 0$ er det kontinuitet i spolestrømmen. Ved $t \rightarrow \infty \implies u(t) \rightarrow 0$\\\\
+Ved $t = 0$ er det kontinuitet i spolestrømmen. Ved $t \rightarrow \infty \implies u(t) \rightarrow 0$ (kortslutning)\\\\
 Fluksen gjennom en spole er gitt ved
 \[\Phi = L \cdot I\]
 Spenning
 \[u(t) = L \cdot i\,'(t)\]
+Strøm
+\[i(t) = I_0+\frac{1}{L}\,\int_{t_0}^t u(x)\,dx\]
 
 \subsection{Kondensator}
+Ved $t = 0$ er det kontinuitet i kondensatorspenning. Ved $t \rightarrow \infty \implies i(t) \rightarrow 0$ (åpen sløyfe)\\\\
 Spenningsdifferansen i en kondensator produserer et elektrisk felt.
 Feltstyrken er gitt ved
 \[\epsilon = \frac{U}{d}\]
 der $d$ er avstanden.\\\\
-Ved $t = 0$ er det kontinuitet i kondensatorspenning. Ved $t \rightarrow \infty \implies i(t) \rightarrow 0$\\\\
 Strøm
 \[i(t) = C \cdot u\,'(t)\]
 Spenning
-\[u(t) = U_0+\frac{1}{C}\,\int_0^t i(x)\,dx\]
+\[u(t) = U_0+\frac{1}{C}\,\int_{t_0}^t i(x)\,dx\]
+Energien i en kondensator er gitt ved
+\[W = \frac{1}{2}\,C\,U^2\]
 
 \subsubsection{Kapitans}
 Er gitt ved
@@ -134,11 +135,83 @@ Total kapitans i parallellkobling er gitt ved
     &= C_1 + C_2 + ... + C_n
 \end{align*}
 
+\subsection{Kirchhoffs lover}
+\subsubsection{Strømloven}
+I et forgreningspunkt er summen av strømmer inn lik summen av strømmer ut. Alternativt, la $I_i$ angi strømmer inn til et forgreningspunkt, da gjelder
+\[\sum_i I_i = 0\]
+\subsubsection{Spenningsloven}
+Summen av alle spenningsendringer i en sløyfe er lik 0. La $U_i$ angi spenninger over komponentene i en sløyfe, da gjelder
+\[\sum_i U_i = 0\]
 
-\subsection{Superposisjonsmetoden}
+\subsection{Kildekonvertering}
+\subsubsection{Thévenin-ekvivalent}
+\begin{enumerate}
+    \item Definer og marker utgangsterminalgrensesnittet (typisk mot lastmotstanden).
+    \item Fjern alt utenfor terminalgrensesnittet.
+    \item Regn ut spenningen mellom de åpne terminalene. Dette er $U_{Th}$.
+    \item Kortslutt terminalene, og regn ut kortslutningsstrømmen $I_k$. $R_{Th}$ er gitt ved $\frac{U_{Th}}{I_k}$.
+\end{enumerate}
+Alternativt kan en finne $R_{Th}$ ved å nullstille alle kildene og regne ut resistansen mellom åpne terminaler.
+
+\subsection{Avhengige spennings- og strømkilder}
+Disse er kilder som ikke har fast verdi. Verdien er proposjonal med en styrestrøm eller styrespenning et annet sted i koblingen.
+\begin{itemize}
+    \item Spenningsforsterkning: $U_0 = A \cdot U_x$
+    \item Strømforsterkning: $I_0 = B \cdot I_x$
+    \item Transkonduktans: $I_0 = g \cdot U_x$
+    \item Transresistans: $U_0 = r \cdot I_x$
+\end{itemize}
+
+\subsection{Knutespenningsmetoden}
+En systematisk fremgangsmåte for å analysere en vilkårlig kobling. Metoden virker likevel ikke for grener med spenningskilde uten resistans, da anvender vi superknutemetoden.
+\begin{enumerate}
+    \item Finn og marker alle forgreningspunkter. Ett av disse skal være jordreferanse. Resten skal indekseres $a, b, c, ...$ . Jord er ofte negativ terminal på en kilde.
+    \item Bruker Kirchhoffs 1. lov (strømloven) i hvert indekserte knutepunkt. Sett opp uttrykk for hver av grenstrømmene ved hjelp av spenningsreferansen mot forgreningspunktet i motsatt ende av grenen.
+    \item Resultatet er $n$ knutelikninger der det finnes $n$ ulike knutespenninger. Disse ordnes i et likningssett og løses ved for eksempel innsetting, Gauss-eliminasjon, Cramers regel eller matriseinvertering.
+    \item Grenstrømmene kan eventuelt finnes ved hjelp av Ohms lov og andre regler.
+\end{enumerate}
+
+\subsection{Superknutemetoden}
 Kan brukes for lineære mål som strøm og spenning, men ikke kvadratiske mål som effekt.
 
+\subsection{Superposisjonsmetoden}
+Superposisjonsmetoden kan \textbf{ikke} brukes dersom det er ulineære komponenter i koblingen.
+\begin{enumerate}
+    \item Velg ut en kilde, og nullstill alle de andre. \begin{itemize}
+        \item Nullstille spenningskilde: $U = 0V$, dvs. kortslutning.
+        \item Nullstille strømkilde: $I = 0A$, dvs åpen sløyfe / brudd.
+    \end{itemize}
+    Analyser denne koblingen med tanke på den aktuelle strømmen eller spenningen. Resultat: strømbidrag / spenningsbidrag.
+    \item Repeter steg 1 for alle kilder etter tur.
+    \item Delbidragene skal adderes for å finne den aktuelle strømmen / spenningen.
+\end{enumerate}
 
+\subsection{Ulike typer komponenter}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c}
+    Komponent       & Aktiv / Passiv    & Lineær / Ulineær \\
+    \hline
+    Spenningskilder & -         & Lineær\\
+    Strømkilder     & -         & Lineær\\
+    Resistanser     & Passiv    & Lineær\\
+    Spoler          & Passiv    & Lineær\\
+    Kondensatorer   & Passiv    & Lineær\\
+    Dioder          & Aktiv     & Ulineær\\
+    Transistorer    & Aktiv     & Ulineær
+    \end{tabular}
+\end{table}
+
+\subsection{Effektiv verdi - RMS}
+Effektiv verdi, eller Root Mean Square, er den konstante verdien som leverer samme effekt som et varierende DC-signal ville levert i den samme belastningen.\\\\
+La $V(t)$ være et varierende signal med periode $T$. Da er effektiv verdi gitt ved
+\[V_{RMS} = \sqrt{\frac{\int_0^T V(t)\,dt}{T}}\]
+RMS for noen vanlige signaler
+\begin{itemize}
+    \item Sinussignal med amplitude A: $V_{EFF} = \frac{A}{\sqrt{2}}$
+    \item Sagtannsignal med amplitude A: $V_{EFF} = \frac{A}{\sqrt{3}}$
+    \item Firkantsignal med amplitude A: $V_{EFF} = A$
+\end{itemize}
 
 
 
@@ -146,7 +219,122 @@ Kan brukes for lineære mål som strøm og spenning, men ikke kvadratiske mål s
 
 \section{Digitalteknikk}
 
+\subsection{2's komplement}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c}
+    Desimaltall & Binærtall & Binærtall \\
+    \hline
+     & Sign-magnitude & 2's komplement \\
+    \hline
+    7   & 0111          & 0111\\
+    6   & 0110          & 0110\\
+    5   & 0101          & 0101\\
+    4   & 0100          & 0100\\
+    3   & 0011          & 0011\\
+    2   & 0010          & 0010\\
+    1   & 0001          & 0001\\
+    0   & 0000 / 1000   & 0000\\
+    -1  & 1001          & 1111\\
+    -2  & 1010          & 1110\\
+    -3  & 1011          & 1101\\
+    -4  & 1100          & 1100\\
+    -5  & 1101          & 1011\\
+    -6  & 1110          & 1010\\
+    -7  & 1111          & 1001\\
+    -8  & -             & 1000
+    \end{tabular}
+    \caption{Sign-magnitude og 2's komplement}
+\end{table}
 
+
+\subsection{Mintermer og makstermer}
+En minterm $m_i$ har den egenskapen at den er lik 1 i nøyaktig én rad i sannhetstabellen. En maksterm $M_i$ er lik 0 i nøyaktig én rad i sannhetstabellen.\\\\
+Eksempel:
+\begin{itemize}
+    \item $F = \overline{x}\overline{y}\overline{z} + \overline{x}\overline{y}z + xyz$
+    \item $F = m_0 + m_1 + m_2 = \sum \, (0, 1, 7)$
+    \item $F = M_2 \cdot M_3 \cdot M_4 \cdot M_5 \cdot M_6 = \prod \, (2, 3, 4, 5, 6)$
+\end{itemize}
+
+\subsection{Karnaughdiagram og kubediagram}
+
+\subsection{Tabellmetoden}
+
+\subsection{Overflyt}
+Hvis man legger sammen to tall A og B med samme fortegn, men R får forskjellig fortegn, har man overflyt. Da er resultatet ugyldig.
+
+\subsection{Oppsetningstid og holdetid}
+Oppsetningstid er tiden signalet må være gyldig før klokkeendring. Holdetid er tiden signalet må være gyldig etter klokkeendring.
+
+\subsection{Vipper (flipflops)}
+
+\subsubsection{D-vippe}
+$Q_{next} = D$.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c}
+    $Q$ & $Q_{next}$ & $D$ \\
+    \hline
+    0 & 0 & 0\\
+    0 & 1 & 1\\
+    1 & 0 & 0\\
+    1 & 1 & 1
+    \end{tabular}
+    \caption{Eksitasjonstabell, D-vippe}
+\end{table}
+
+\subsubsection{T-vippe}
+Høy $T$ inverterer.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c}
+    $Q$ & $Q_{next}$ & $T$ \\
+    \hline
+    0 & 0 & 0\\
+    0 & 1 & 1\\
+    1 & 0 & 1\\
+    1 & 1 & 0
+    \end{tabular}
+    \caption{Eksitasjonstabell, T-vippe}
+\end{table}
+
+\subsubsection{SR-vippe}
+Høy $S$, lav $R$ gir $1$. Høy $R$, lav $S$ gir $0$. 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c|c}
+    $Q$ & $Q_{next}$ & $S$ & $R$\\
+    \hline
+    0 & 0 & 0 & $X$\\
+    0 & 1 & 1 & 0\\
+    1 & 0 & 0 & 1\\
+    1 & 1 & $X$ & 0
+    \end{tabular}
+    \caption{Eksitasjonstabell, SR-vippe}
+\end{table}
+
+\subsubsection{JK-vippe}
+Lik SR-vippe, men høy høy gir toggle.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c|c}
+    $Q$ & $Q_{next}$ & $J$ & $K$\\
+    \hline
+    0 & 0 & 0 & $X$\\
+    0 & 1 & 1 & $X$\\
+    1 & 0 & $X$ & 1\\
+    1 & 1 & $X$ & 0
+    \end{tabular}
+    \caption{Eksitasjonstabell, SR-vippe}
+\end{table}
+
+\subsection{Kritisk sti}
+Kritisk sti er maksimal forsinkelse mellom inngang og utgang.
+
+\subsection{Maksimal klokkefrekvens}
+Maksimal klokkefrekvens er gitt ved
+\[f_{max} = \frac{1}{t_{min}} \]
 
 
 
