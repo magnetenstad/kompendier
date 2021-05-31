@@ -35,7 +35,7 @@
 \subsection{Terminologi og definisjoner}
 
 
-\subsubsection{Terminologi}
+\subsubsection{Symboler og enheter}
 \begin{table}[h]
     \centering
     \begin{tabular}{c|c|c}
@@ -55,6 +55,21 @@
     \end{tabular}
 \end{table}
 
+\subsubsection{Ulike typer komponenter}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c}
+    Komponent       & Aktiv / Passiv    & Lineær / Ulineær \\
+    \hline
+    Spenningskilder & -         & Lineær\\
+    Strømkilder     & -         & Lineær\\
+    Resistanser     & Passiv    & Lineær\\
+    Spoler          & Passiv    & Lineær\\
+    Kondensatorer   & Passiv    & Lineær\\
+    Dioder          & Aktiv     & Ulineær\\
+    Transistorer    & Aktiv     & Ulineær
+    \end{tabular}
+\end{table}
 
 \subsubsection{Passiv fortegnskonvensjon}
 Når referanseretningen for strømmen gjennom et kretselement er i samme retning
@@ -107,6 +122,8 @@ Spenning
 \[u(t) = L \cdot i\,'(t)\]
 Strøm
 \[i(t) = I_0+\frac{1}{L}\,\int_{t_0}^t u(x)\,dx\]
+Energien i en spole er gitt ved
+\[W = \frac{1}{2}\,L\,I^2\]
 
 \subsection{Kondensator}
 Ved $t = 0$ er det kontinuitet i kondensatorspenning. Ved $t \rightarrow \infty \implies i(t) \rightarrow 0$ (åpen sløyfe)\\\\
@@ -151,7 +168,12 @@ Summen av alle spenningsendringer i en sløyfe er lik 0. La $U_i$ angi spenninge
     \item Regn ut spenningen mellom de åpne terminalene. Dette er $U_{Th}$.
     \item Kortslutt terminalene, og regn ut kortslutningsstrømmen $I_k$. $R_{Th}$ er gitt ved $\frac{U_{Th}}{I_k}$.
 \end{enumerate}
-Alternativt kan en finne $R_{Th}$ ved å nullstille alle kildene og regne ut resistansen mellom åpne terminaler.
+Alternativt kan en finne $R_{Th}$ ved å nullstille alle kildene og regne ut resistansen mellom åpne terminaler.\\\\
+Den ekvivalente Thévenin-kretsen er da bygget opp av en spenningskilde med $U_{Th}$ og en resistans $R_{Th}$ i serie.
+
+\subsubsection{Norton-ekvivalent}
+Finn $U_{Th}$ og $R_{Th}$ på samme måte som i en Thévenin-ekvivalent. \\\\
+Den ekvivalente Norton-kretsen er da bygget opp av en strøm med $I = \frac{U_{Th}}{R_{Th}}$ og en resistans $R_{Th}$ i parallell.
 
 \subsection{Avhengige spennings- og strømkilder}
 Disse er kilder som ikke har fast verdi. Verdien er proposjonal med en styrestrøm eller styrespenning et annet sted i koblingen.
@@ -172,7 +194,7 @@ En systematisk fremgangsmåte for å analysere en vilkårlig kobling. Metoden vi
 \end{enumerate}
 
 \subsection{Superknutemetoden}
-Kan brukes for lineære mål som strøm og spenning, men ikke kvadratiske mål som effekt.
+Superknutemetoden er en versjon av knutespenningsmetoden som brukes for grener med spenningskilde utens resistans. Metoden går ut på å definere en felles \textit{superknute} for forgreningspunktene på hver side av spenningskilden. Obs: dette gir flere ukjente enn likninger, men man bruker spenningsdiffereransen mellom forgreningspunktene som tilleggslikning. 
 
 \subsection{Superposisjonsmetoden}
 Superposisjonsmetoden kan \textbf{ikke} brukes dersom det er ulineære komponenter i koblingen.
@@ -186,22 +208,6 @@ Superposisjonsmetoden kan \textbf{ikke} brukes dersom det er ulineære komponent
     \item Delbidragene skal adderes for å finne den aktuelle strømmen / spenningen.
 \end{enumerate}
 
-\subsection{Ulike typer komponenter}
-\begin{table}[h]
-    \centering
-    \begin{tabular}{c|c|c}
-    Komponent       & Aktiv / Passiv    & Lineær / Ulineær \\
-    \hline
-    Spenningskilder & -         & Lineær\\
-    Strømkilder     & -         & Lineær\\
-    Resistanser     & Passiv    & Lineær\\
-    Spoler          & Passiv    & Lineær\\
-    Kondensatorer   & Passiv    & Lineær\\
-    Dioder          & Aktiv     & Ulineær\\
-    Transistorer    & Aktiv     & Ulineær
-    \end{tabular}
-\end{table}
-
 \subsection{Effektiv verdi - RMS}
 Effektiv verdi, eller Root Mean Square, er den konstante verdien som leverer samme effekt som et varierende DC-signal ville levert i den samme belastningen.\\\\
 La $V(t)$ være et varierende signal med periode $T$. Da er effektiv verdi gitt ved
@@ -213,13 +219,36 @@ RMS for noen vanlige signaler
     \item Firkantsignal med amplitude A: $V_{EFF} = A$
 \end{itemize}
 
-
-
-
+\subsection{PMOS- og NMOS-transistorer}
+\subsection{Hvordan disse kan brukes som brytere}
+Virkemåten er baser på at konduktiviteten (ledningsevnen) til en ledende kanal i 
+halvlederen kan varieres ved at en ekstern spenning (gate-spenningen) varieres. 
+Anrikningstype MOSFET er normalt av (ingen ledende kanal) og transistoren 
+fungerer som en åpen bryter mellom Drain og Source.
+Ved å påtrykke en negativ spenning på Gate i en PMOS-transistor opprettes en p-kanal mellom Drain og Source og transistoren fungerer da som en lukket bryter sett 
+mellom Drain og Source. I en NMOS-transistor må det påtrykkes en positiv spenning 
+på Gate for å opprette en n-kanal mellom Drain og Source.
+At kanalene (P-kanal og N-kanal) opprettes skyldes felteffekt.
+Transistoren styres vha Gate-spenningen. Det går ingen strøm inn i Gate pga det 
+isolerende oksid-laget.
+\subsection{Maksimal frekvens}
+Det vil alltid være en viss motstand i n-kanalen og p-kanalen som genereres. Denne 
+motstanden kan ekvivaleres med en R.
+Mellom Gate og halvlederen etableres det en ladning på hver side av oksid-laget. 
+Dette gir opphav til en kapasitans C. Å opprette ladning eller flytte ladning vil ta en viss tid gitt av størrelsen på R og C i 
+vår enkle modell. Hastigheten på hvor fort transistorene kan slås av/på er gitt av 
+tidskonstanten av type $\tau = RC$.
+\subsection{CMOS-transistor og inverterer}
+Kombinasjonen av PMOS- og NMOS-transistorer danner et komplementært sett av 
+transistorer som kalles CMOS-transistorer (Complementary Metal Oxide 
+Semiconductor). I dette tilfellet er disse transistorene brukt i en inverter.
 
 \section{Digitalteknikk}
 
-\subsection{2's komplement}
+\subsection{Toerkomplement}
+I et tall på binær toerkomplement-form teller det første bitet negativt.\\\\
+Omgjøring mellom standard binær og toerkomplement (og tilbake!) gjøres ved
+\[T = \overline{B} + 1\]
 \begin{table}[h]
     \centering
     \begin{tabular}{c|c|c}
