@@ -34,6 +34,7 @@
 
 \clearpage
 \section{Komplekse tall}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/1-komplekse-tall.pdf}{Wiki}.
 
 
 \subsection{Den imaginære enheten}
@@ -50,10 +51,8 @@ Mengden av komplekse tall er $\mathbb{C}$.
 
 \subsection{Operasjoner på komplekse tall}
 Regneregler for komplekse tall følger regnereglene for reelle tall.
-
-
-\subsubsection{Konjugat}
-La $z = a + bi$ være et komplekst tall. Da er $z$ \textit{konjugert} gitt ved
+\\\\
+\textbf{Definisjon.} La $z = a + bi$ være et komplekst tall. Da er $z$ \textit{konjugert} gitt ved
 \[ z = a - bi \]
 Merk at $z\overline{z} = a^2 + b^2$ er et reelt tall.
 
@@ -64,8 +63,8 @@ Polarkoordinater er nyttige når en multipliserer og tar potenser av komplekse t
 La $r$ være avstanden fra det komplekse tallet $z =
 a + bi$ til origo, og la $\theta$ være vinkelen $z$ gjør med den reelle aksen. Da har vi at
 \begin{gather*}
-    a = Re \, z = r \, \cos{\theta} \\
-    b = Im \, z = r \, \sin{\theta}
+    a = \text{Re}\, z = r \, \cos{\theta} \\
+    b = \text{Im}\, z = r \, \sin{\theta}
 \end{gather*}
 $r$ kalles \textit{modulus} eller \textit{absoluttverdi} til $z$ og $\theta$ kalles \textit{vinkelen} eller \textit{argumentet} til $z$.
 \begin{gather*}
@@ -81,7 +80,7 @@ $r$ kalles \textit{modulus} eller \textit{absoluttverdi} til $z$ og $\theta$ kal
 
 
 \subsubsection{Trekantulikheten}
-La $z$ og $w$ være komplekse tall. Da gjelder at
+\textbf{Teorem 1.5.} La $z$ og $w$ være komplekse tall. Da gjelder at
 \[ |z + w| \leq |z| + |w| \]
 
 
@@ -92,7 +91,11 @@ der $x \in \mathbb{R}$ og $i$ er den imaginære enheten.
 \\\\
 Det følger at
 \[ z = r(\cos{\theta} + i \, \sin{\theta}) = re^{i\theta} \]
-
+\textbf{Teorem 1.7.} La $z = re^{i\theta}$ og $w = se^{i\alpha}$. Da gjelder:
+\begin{align*}
+    z \cdot w &= rse^{i(\theta + \alpha)} \\
+    \frac{z}{w} &= \frac{r}{s} e^{i(\theta - \alpha)}
+\end{align*}
 
 \subsection{Røtter av komplekse tall}
 Et polynom $f(z) = z^n + a_{z-1}z^{n-1} + ... + a_1<+a_0$, $z \in \mathbb{C}$ kan alltid faktoriseres
@@ -104,10 +107,11 @@ der $z_i \in \mathbb{C}$ er løsninger av likningen $f(z) = 0$.
 
 \clearpage
 \section{Lineære likningssystemer og gausseliminasjon}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/2-lineare-likningssystemer.pdf}{Wiki}.
 
 
 \subsection{Ekvivalente systemer}
-Vi sier at to ligningssystemer er ekvivalente dersom
+Vi sier at to likningssystemer er ekvivalente dersom
 de har samme løsningsmengder.
 
 
@@ -118,11 +122,13 @@ Et lineært likningssystem med $m$ likninger og $n$ ukjente beskrives av en matr
 \subsection{Radoperasjoner}
 Følgende tre måter å endre en matrise på kalles \textit{radoperasjoner}:
 \begin{enumerate}
-    \item Gange alle tallene i en rad med det samme tallet. Dette betyr å gange en ligning med et tall. Vi kan ikke gange med 0.
-    \item Legge til et multiplum av en rad i en annen. Dette er å kombinere ligninger til nye ligninger.
-    \item Bytte rekkefølge på radene. Dette er det samme som å bytte rekkefølge på ligningene.
+    \item Gange alle tallene i en rad med det samme tallet. Dette betyr å gange en likning med et tall. Vi kan ikke gange med 0.
+    \item Legge til et multiplum av en rad i en annen. Dette er å kombinere likninger til nye likninger.
+    \item Bytte rekkefølge på radene. Dette er det samme som å bytte rekkefølge på likningene.
 \end{enumerate}
 Vi sier at to matriser er radekvivalente hvis vi kan komme fra den ene til den andre ved å utføre en eller flere radoperasjoner. Vi bruker notasjonen $M \sim N$ for å si at to matriser $M$ og $N$ er radekvivalente.
+\\\\
+\textbf{Teorem 2.7.} Hvis to likningssystemer har radekvivalente totalmatriser, så er de to likningssystemene ekvivalente.
 
 
 \subsection{Trappeform, redusert trappeform og pivotelementer}
@@ -131,18 +137,17 @@ Vi sier at to matriser er radekvivalente hvis vi kan komme fra den ene til den a
 \textbf{Definisjon.} En matrise er på trappeform dersom det ikke er annet enn $0$-ere under hvert pivotelement, og eventuelle nullrader er helt nederst.
 \\\\
 \textbf{Definisjon.} En matrise er på redusert trappeform hvis den er på trappeform, pivotelementene er $1$ og alle tall som står over pivotelementer er $0$.
+\\\\
+\textbf{Teorem 2.11.} For enhver $m \times n$-matrise $M$, finnes en $m \times n$-matrise $N$ på redusert trappeform, slik at $M$ og $N$ er radekvivalente.
 
 
 \subsection{Eksistens, entydighet og parametrisering av løsninger}
-For ethvert lineært ligningssystem må ett av de følgende punktene være sant:
+For ethvert lineært likningssystem må ett av de følgende punktene være sant:
 \begin{itemize}
     \item Systemet har ingen løsning: Dette skjer når vi i redusert trappeform har en rad av typen $ 0 \ 0 \ ... \ 0 \ | \ b $ der $b \neq 0$.
     \item Systemet har entydig løsning. Dette skjer når trappeform av totalmatrisen har pivotelement i alle kolonner unntatt den siste.
     \item Systemet har uendelig mange løsninger. Dette skjer når vi får frie variabler. Vi får en fri variabel for hver kolonne (unntatt den siste) som ikke har pivotelement.
 \end{itemize}
-
-
-\subsection{Valgfrihet ved gausseliminasjon}
 
 
 \subsection{Lineære likninger med komplekse tall}
@@ -153,6 +158,7 @@ Et lineært likningssett med komplekse koeffisienter og løsning, kan løses med
 
 \clearpage
 \section{Vektorlikninger}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/3-vektor-og-matriselikninger.pdf}{Wiki}.
 
 
 \subsection{Vektorregning}
@@ -164,15 +170,26 @@ Det lineære spennet til $x$ og $y$ er mengden av \textit{alle lineærkombinasjo
 
 
 \subsection{Vektorlikninger}
+Likningssystemer kan ofte skrives om til vektorlikninger.
 
 
 \subsection{Geometrisk tolkning av vektorlikninger: Eksistens og entydighet av løsninger}
+Vi tar utgangspunkt i vektorlikningen
+\[ xv_1 + yv_2 + zv_3 = v_4 \]
+Vi skal nå gi noen geometriske illustrasjoner i $\mathbb{R}^3$ av hva som skjer i de ulike tilfellene:
+\begin{itemize}
+    \item Systemet har ingen løsning: $v_4 \notin \text{Sp}\{v_1, v_2, v_3\}$
+    \item Systemet har entydig løsning: $v_4 \in \text{Sp}\{v_1, v_2, v_3\}$ og $v_1, v_2, v_3$ er lineært uavhengige.
+    \item Systemet har uendelig mange løsninger: $v_4 \in \text{Sp}\{v_1, v_2, v_3\}$ og $v_1, v_2, v_3$ er lineært avhengige.
+\end{itemize}
 
 
 
 
 \clearpage
 \section{Matriser}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/4-matriser.pdf}{Wiki}.
+
 
 \subsection{Definisjoner og notasjon}
 
@@ -181,22 +198,16 @@ Det lineære spennet til $x$ og $y$ er mengden av \textit{alle lineærkombinasjo
 \textbf{Teorem 4.6.} Hvis $A$ er en $m \times n$-matrise, $v$ og $w$ er vektorer i $\mathbb{R}^n$ og $c$ er en skalar, så har vi følgende likheter:
 \[ A(v + w) = Av + Aw \]
 \[ A(cv) = c(Av) \]
+
+
+\subsection{Sum og skalering av matriser}
 \textbf{Teorem 4.9.} Hvis $A$ og $B$ er $m \times n$-matriser, $v$ er en vektorer i $\mathbb{R}^n$ og $c$ er en skalar, så har vi følgende likheter:
 \[ (A + B)v = Av + Bv \]
 \[ (cA)v = c(Av) \]
 
 
-\subsection{Matriselikninger}
-
-
-\subsection{Sum og skalering av matriser}
-
-
-\subsection{Vektorer som matriser}
-
-
 \subsection{Matrisemultiplikasjon}
-Definisjon. La A være en $m \times n$-matrise med rader
+\textbf{Definisjon.} La A være en $m \times n$-matrise med rader
 $a_1, a_2, \dots, a_m$, og la B være en $n \times p$-matrise med
 kolonner $b_1, b_2, \dots, b_p$. Produktet av A og B er definert ved:
 \[ AB = \begin{bmatrix}
@@ -205,7 +216,6 @@ a_1b_1 & a_1b_2 & \cdots & a_1b_p \\
 \vdots & \vdots & \ddots & \vdots \\
 a_mb_1 & a_mb_2 & \cdots & a_mb_p \\
 \end{bmatrix} \]
-
 \textbf{Teorem 4.13.} La $A$, $B$, og $C$ være matriser, $v$ en vektor, og $c$ et tall. I hver del av teoremet antar vi at størrelsene på matrisene og vektoren er slik at alle operasjonene som brukes er definert.\\\\
 (a) Matrisemultiplikasjon er en assosiativ operasjon, det vil si:
 \[ A(BC) = (AB)C \]
@@ -219,7 +229,7 @@ Et spesialtilfelle av dette er følgende:
 
 
 \subsection{Transponering}
-Operasjonen \textit{transponering} går ut på å bytt om rader og kolonner.
+Operasjonen \textit{transponering} går ut på å bytte om rader og kolonner.
 \\\\
 \textbf{Teorem 4.15.} For enhver matrise $A$ har vi:
 \[ (A^\top)^\top = A \]
@@ -255,9 +265,6 @@ En matrise er \textit{inverterbar} hvis den har en invers.
 \textbf{Teorem 4.20.} La $A$ være en $n \times n$-matrise, og $b$ en vektor. Hvis $A$ er inverterbar, så har likningen $Ax = b$ entydig løsning, og løsningen er $x = A^{-1}b$.
 
 
-\subsection{Samtidig løsning av flere systemer}
-
-
 \subsection{Beregning av inverser}
 \textbf{Teorem 4.25.} La $A$ være en $n \times n$-matrise.\\\\
 (a) $A$ er inverterbar hvis og bare hvis $A \sim I_n$.
@@ -278,11 +285,11 @@ Da er
 
 \clearpage
 \section{Lineær uavhengighet}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/5-linear-uavhengighet.pdf}{Wiki}.
+
 
 \subsection{Lineært spenn: overflødige vektorer}
 Dersom en vektor $u$ ikke utvider spennet til en mengde vektorer $v_1, \cdots, v_n$ så er vektorene $u, v_1, \cdots, v_n$ lineært avhengige.
-
-\subsection{Lineær uavhengighet i $R^3$}
 
 
 \subsection{Definisjon av lineær uavhengighet}
@@ -329,6 +336,8 @@ så er vektorene lineært avhengige.
 
 \clearpage
 \section{Determinanter}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/6-determinanter.pdf}{Wiki}.
+
 
 \subsection{Determinanter for 2 x 2-matriser}
 For en $2 \times 2$-matrise
@@ -362,12 +371,6 @@ er determinanten definert ved:
 \end{align*}
 
 
-\subsection{Determinanter: generell definisjon}
-
-
-\subsection{Kofaktorekspansjon}
-
-
 \subsection{Determinanter og radoperasjoner}
 \textbf{Teorem 6.5.} La $A$ være en $n \times n$-matrise, og la $B$ være en matrise vi får ved å utføre en radoperasjon på $A$. Da har vi følgende sammenheng mellom determinantene til $A$ og $B$, basert på hvilken type radoperasjon vi utførte:
 \begin{table}[h]
@@ -385,6 +388,7 @@ er determinanten definert ved:
 \subsection{Triangulære matriser}
 \textbf{Teorem 6.8.} La $A$ være en (øvre eller nedre) triangulær $n \times n$-matrise. Da er determinanten til $A$ lik produktet av tallene på diagonalen i $A$:
 \[ \det{A} = a_{11} \cdot a_{22} \cdot \cdots \cdot a_{nn} \]
+\textbf{Teorem fra LF} La $A$ være en øvre triangulær $n \times n$-matrise. Da er egenverdiene til $A$ elementene på diagonalen.
 
 
 \subsection{Flere regneregler for determinanter}
@@ -407,14 +411,11 @@ er determinanten definert ved:
 
 
 \clearpage
-\section{Vektorrom}
 
-
-\subsection{Reelle og komplekse vektorrom}
-
-
-\subsection{Aksiomer for vektorrom}
 \includepdf[]{assets/vektorromaksiomene.pdf}
+
+\section{Vektorrom}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/7-vektorrom.pdf}{Wiki}.
 
 
 \subsection{Definisjonen av vektorrom}
@@ -424,9 +425,6 @@ er determinanten definert ved:
     \text{skalarmultiplikasjon:} \ c \cdot u
 \end{gather*}
 Addisjon skal være definert for alle elementer $u$ og $v$ i $V$, og skalarmultiplikasjonen for alle skalarer $c$ og alle $u$ i $V$. Resultatet av operasjonene skal alltid være et element i $V$. Dersom mengden $V$ og de to operasjonene oppfyller vektorromsaksiomene (V1)-(V8), så sier vi at $V$ er et \textit{vektorrom}, og vi kaller elementene i $V$ for \textit{vektorer}.
-
-
-\subsection{Første eksempler}
 
 
 \subsection{Generelle egenskaper og lineær uavhengighet}
@@ -469,7 +467,7 @@ så er vektorene lineært avhengige.
 
 
 \subsection{Basis}
-\textbf{Definisjon.} En \textit{basis} fpr et vektorrom $V$ er en liste
+\textbf{Definisjon.} En \textit{basis} for et vektorrom $V$ er en liste
 \[ B = (b_1, b_2, \dots, b_n) \]
 av vektorer i $V$ som både utspenner $V$ og er lineært uavhengige.
 \\\\
@@ -536,8 +534,12 @@ Dette er det samme som kolonnerommet til den transponerte matrisen:
 \textbf{Teorem 7.27} La $A$ være en $m \times n$-matrise. Da er
 \[ \text{dim Null}\,A + \text{rank}\,A = n \]
 
+
+
+
 \clearpage
 \section{Lineærtransformasjoner}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/8-lineartransformasjoner.pdf}{Wiki}.
 
 
 \subsection{Funksjoner}
@@ -586,7 +588,9 @@ Det følger umiddelbart fra definisjonen at en funksjon $f: A \rightarrow B$ er 
 der $A$ er $m \times n$-matrisen gitt ved
 \[ [ \ T(e_1) \ T(e_2) \ \cdots \ T(e_n) \ ] \]
 hvor $(e_1, e_2, \dots, e_n)$ er standardmatrisen for $\mathbb{R}^n$.
+\\\\
 \textbf{Definisjon.} Matrisen $A$ i teorem 8.13 kalles \textit{standardmatrisen} til lineærtransformasjonen $T$.
+\\\\
 \textbf{Teorem 8.14.} La $T: \mathbb{R}^n \rightarrow \mathbb{R}^m$ være en lineærtransformasjon og la $A$ være standardmatrisen til $T$. Da vet vi:
 \begin{enumerate}
     \item $T$ er surjektiv hvis og bare hvis kolonnene i $A$ utspenner hele $\mathbb{R}^m$.
@@ -621,8 +625,9 @@ for alle vektorer $x$ i $V$.
 
 \clearpage
 \section{Projeksjon}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/9-projeksjon.pdf}{Wiki}.
 
-\subsection{Ortogonal projeksjon i $R^2$}
+
 \subsection{Skalarproduktet i $R^n$}
 \textbf{Teorem 9.3.} Den ortogonale projeksjonen på en vektor $v$,
 \begin{gather*}
@@ -640,7 +645,8 @@ er en lineærtransformasjon.
     &\langle v, v \rangle \geq 0 \text{, og } \langle v, v \rangle = 0 \text{ kun hvis } v = 0 &\text{(positivitet)}
 \end{align*}
 Vi sier at $V$, sammen med et valgt indreprodukt, er et \textit{indreproduktrom}.
-\textbf{Teorem 9.6.} (Pytagoras). La $V$ være et reelt indrproduktrom. Dersom vektorene $v$ og $w$ er ortogonale, er
+\\\\
+\textbf{Teorem 9.6.} (Pytagoras). La $V$ være et reelt indreproduktrom. Dersom vektorene $v$ og $w$ er ortogonale, er
 \[ \lVert v + w \rVert = \lVert v \rVert^2 + \lVert w \rVert^2 \]
 \textbf{Teorem 9.7.} (Cauchy-Schwarz). La $V$ være et reelt indreproduktrom. Alle vektorer $v$ og $w$ tilfredstiller
 \[| \langle v, w \rangle | \leq \lVert v \rVert \lVert w \rVert \]
@@ -650,6 +656,7 @@ Vi sier at $V$, sammen med et valgt indreprodukt, er et \textit{indreproduktrom}
     P_v(w)=\frac{\langle v, w \rangle}{\langle v, v \rangle}\,v
 \end{gather*}
 er en lineærtransformasjon.
+\\\\
 \textbf{Teorem 9.9.} La $v$ og $w$ være to vektorer i et indreproduktrom $V$. Da er $P_v(w)$ og $w-P_v(w)$ ortogonale.
 
 
@@ -657,8 +664,11 @@ er en lineærtransformasjon.
 \textbf{Definisjon.} En \textit{ortogonal mengde} er en mengde av ikke-null vektorer $u_1, u_2, \dots, u_n$, slik at
 \[ \langle u_i, u_k \rangle = 0 \]
 for alle vektorer $u_i$ og $u_k$ i mengden med $i \neq k$. Dersom i tillegg $\lVert u_j \rVert = 1$ for alle vektorene, sier vi at mengden er \textit{ortonormal}.
+\\\\
 \textbf{Teorem 9.10.} En ortogonal mengde er lineært uavhengig.
+\\\\
 \textbf{Definisjon.} Dersom en ortogonal mengde $u_1, u_2, \dots, u_n$ i $V$ også er en basis, sier vi at mengden er en \textit{ortogonal basis} for $V$.
+\\\\
 \textbf{Teorem 9.12.} Koordinatene til $v$ i en ortogonal basis $u_1, u_2, \dots, u_n$ er
 \begin{align*}
     v &= P_{u_1}(v) + P_{u_2}(v) + \dots + P_{u_n}(v) \\
@@ -738,6 +748,8 @@ Vi sier at $V$, sammen med et valgt indreprodukt, er et \textit{indreproduktrom}
 
 \clearpage
 \section{Egenverdier og egenvektorer}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/10-egenverdier-og-egenvektorer.pdf}{Wiki}.
+
 
 \subsection{Definisjon av egenverdier og egenvektorer}
 \textbf{Definisjon.} La $T: V \rightarrow V$ være en lineærtransformasjon. En skalar $\lambda$ er en \textit{egenverdi} for $T$ hvis det finnes en vektor $v \neq 0$ i $V$ slik at
@@ -753,9 +765,8 @@ Vektoren $v$ kalles en \textit{egenvektor} for $T$ som hører til egenverdien $\
 \textbf{Teorem 10.5.} La $T: V \rightarrow V$ være en lineærtransformasjon. La $v_1, v_2, \dots, v_t$ være egenvektorer til $T$ som hører til forskjellige egenverdier $\lambda_1, \lambda_2, \dots, \lambda_t$. Da er vektorene $v_1, v_2, \dots, v_t$ lineært uavhengige.
 \\\\
 \textbf{Teorem 10.6.} La $V$ være et $n$-dimensjonalt vektorrom og $T: V \rightarrow V$ være en lineærtransforamsjon. Hvis $T$ har $n$ forskjellige egenverdier, så finnes det en basis for $V$ som består egenvektorer av $T$.
-
-
-\subsection{Noen geometriske eksempler}
+\\\\
+\textbf{Teorem fra LF.} La $A$ være en inverterbar matrise med egenverdi $a$. Da er $\frac{1}{a}$ en egenverdi for $A^{-1}$.
 
 
 \subsection{Hvordan finne egenverdier og egenvektorer?}
@@ -777,9 +788,6 @@ Vektoren $v$ kalles en \textit{egenvektor} for $T$ som hører til egenverdien $\
 Dimensjonen til egenrommet kalles den \textit{geometriske multiplisiteten} til $\lambda$.
 
 
-\subsection{Fremgangsmåte for å finne egenverdier og egenvektorer}
-
-
 \subsection{Eksistens av egenverdier}
 \textbf{Teorem 10.14.} En kompleks $n \times n$-matrise $A$ har alltid $n$ egenverdier (talt med algebraisk multiplisitet).
 \\\\
@@ -789,9 +797,14 @@ Dimensjonen til egenrommet kalles den \textit{geometriske multiplisiteten} til $
 \\\\
 \textbf{Teorem 10.20.} Egenrommet har dimensjon større enn eller lik $1$ og mindre enn eller lik den algebraiske multiplisiteten til egenverdien.
 
+
+
+
 \clearpage
 \section{Diagonalisering}
-\textbf{Definsjon.} Vi sier at en $n \times $-matrise er \textit{diagonaliserbar} hvis det finnes en diagonalmatrise $D$ og en inverterbar matrise $P$ slik at
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/11-diagonalisering.pdf}{Wiki}.
+\\\\
+\textbf{Definisjon.} Vi sier at en $n \times n$-matrise $A$ er \textit{diagonaliserbar} hvis det finnes en diagonalmatrise $D$ og en inverterbar matrise $P$ slik at
 \[ A = PDP^{-1} \]
 Vi sier da at $P$ diagonaliserer $A$.
 \\\\
@@ -804,9 +817,6 @@ Vi sier da at $P$ diagonaliserer $A$.
 \textbf{Teorem 11.5.} En kompleks $n \times n$-matrise $A$ er diagonaliserbar hvis og bare hvis det finnes en basis for $\mathbb{C}^n$ som kun består av egenvektorer for $A$. En reell $n \times n$-matrise $A$ er diagonaliserbar som en reell matrise hvis og bare hvis det finnes en basis for $\mathbb{R}^n$ som kun består av egenvektorer for $A$.
 \\\\
 \textbf{Teorem 11.6.} La $T: V \rightarrow V$ være en lineærtransformasjon. Vi antar at $T$ er diagonaliserbar og at $B = (v_1, \dots, v_n)$ er en basis som består av $T$ sine egenvektorer. Da er matrisen som beskriver $T$ med hensyn på basisen $B$ en diagonalmatrise $D$, med egenverdierne $\lambda_1, \dots, \lambda_n$ til $T$ på diagonalen.
-
-
-\subsection{Eksempler}
 
 
 \subsection{Mer om komplekse egenverdier}
@@ -835,18 +845,20 @@ og
 \[ A = A^* \]
 \textbf{Teorem 11.18.} En hermitsk $n \times n$-matrise har $n$ reelle egenverdier (talt med multiplisitet) og er ortogonalt diagonaliserbar.
 
+
+
+
 \clearpage
 \section{Interpolasjon, regresjon og markovkjeder}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/12\%20-\%20Interpolasjon,\%20regresjon\%20og\%20markovkjeder.pdf}{Wiki}.
+
 
 \subsection{Minste kvadraters metode}
 \textbf{Definisjon.} Vi kaller $\hat{x}$ den \textit{minste kvadraters løsning} for $Ax = b$.
 \\\\
 \textbf{Teorem 12.1.} La $A$ være en $m \times n$-matrise og $b$ være en kolonne vektor i $\mathbb{R}^m$. Mengden av minste kkvadraters løsninger for systemet $Ax = b$ er lik løsningsmengden for systemet
 \[ A^T(Ax-b)=0 \]
-Hvis $n \times n$-matrisen $A^tA$ er inverterbar, finnes det for hver $b$, en unik minste kvadraters løsning $\hat{x}$ for systemet $Ax = b$.
-
-
-\subsection{Interpolasjon og regresjon}
+Hvis $n \times n$-matrisen $A^TA$ er inverterbar, finnes det for hver $b$, en unik minste kvadraters løsning $\hat{x}$ for systemet $Ax = b$.
 
 
 \subsection{Markovkjeder}
@@ -869,6 +881,7 @@ en \textit{Markovkjede.}
 
 \clearpage
 \section{Systemer av differensiallikninger}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/13-system.pdf}{Wiki}.
 
 
 \subsection{Vektorfunksjoner}
@@ -922,11 +935,11 @@ hvor $y_h(t)$ er en generell løsning av den tilhørende homogene likningen.
 \textbf{Merk.} Det forventes ikke at du kan finne partikulære løsninger av vilkårlige system. Du vil alltid få dem servert.
 
 
+
+
 \clearpage
 \section{Andre ordens lineære differensiallikninger}
-
-
-\subsection{Hvor kommer andre ordens differensiallikninger fra?}
+Finner du ikke det du ser etter? Se \href{https://www.math.ntnu.no/emner/TMA4110/2020h/notater/14-andre-ordens-lineare-differensialligninger.pdf}{Wiki}.
 
 
 \subsection{Noen forberedelser}
@@ -954,17 +967,52 @@ er et to-dimensjonalt reelt vektorrom som utspennes av følgende lineært uavhen
 \end{itemize}
 
 
-\subsection{Eksempler på homogene likninger}
-
-
 \subsection{Løsningsteknikk for inhomogene likninger}
 \textbf{Teorem 14.6.} Alle løsninger til den inhomogene likningen er på formen
 \[ y(t) = y_p(t) + y_h(t) \]
 der $y_p(t)$ er en partikulær løsning og $y_h(t)$ er en løsning til den tilsvarende homogene likningen.
 
-\subsection{Initialverdiproblem}
 
 
 
+\clearpage
+\section{Hjelpemidler}
+
+
+\subsection{Wolfram Alpha}
+\href{https://www.wolframalpha.com/input/?i=matrices}{Wolfram Alpha - Matriser}
+
+\subsection{Likningssystem}
+Et likningssystem kan skrives om til en matrise og løses ved å bruke den inverse.
+\\\\
+Eksempel:
+\begin{gather*}
+    3x - 2y + z = 7 \\
+    x + y + 2z = 4 \\
+    x - y - z = 0
+\end{gather*}
+Kan gjøres om til matriselikningen
+\[ Ax = B \]
+der
+\[ A = \begin{bmatrix}
+    3 & -2 & 1 \\
+    1 & 1 & 2 \\
+    1 & -1 & -1
+\end{bmatrix}, \quad
+B = \begin{bmatrix}
+    7 \\ 4 \\ 0
+\end{bmatrix}\]
+Hvis $A$ er inverterbar, så kan dette løses ved
+\begin{align*}
+    Ax &= B \\
+    A^{-1}Ax &= A^{-1}B \\
+    x & = A^{-1}B
+\end{align*}
+Dette kan løses direkte i Wolfram.
+
+\subsection{Gausseliminasjon}
+'row reduce' i Wolfram.
+\\\\
+\href{https://www.wolframalpha.com/input/?i=row+reduce+\%7B\%7B1\%2C+1\%2C+4\%2C+0\%7D\%2C+\%7B1\%2C+2\%2C+6\%2C+1\%7D\%2C+\%7B0\%2C+3\%2C+6\%2C+3\%7D\%7D}{Eksempel}
 
 \end{document}
