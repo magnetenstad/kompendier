@@ -529,7 +529,7 @@ Dette er det samme som kolonnerommet til den transponerte matrisen:
     \item Dimensjonen til kolonnerommet til $A$ er lik antall kolonner med pivotelementer i $E$.
     \item Dimensjonen til radrommet til $A$ er lik antall rader som ikke er null i $E$.
 \end{enumerate}
-\textbf{Teorem 7.26} La $A$ være en $m \times n$-matrise. Da har kolonnerommet og radommet til $A$ samme dimensjon. Dette kalles \textit{rangen} til $A$.
+\textbf{Teorem 7.26} La $A$ være en $m \times n$-matrise. Da har kolonnerommet og radrommet til $A$ samme dimensjon. Dette kalles \textit{rangen} til $A$.
 \[ \text{dim Col}\,A = \text{dim Row}\,A = \text{rank}\,A\]
 \textbf{Teorem 7.27} La $A$ være en $m \times n$-matrise. Da er
 \[ \text{dim Null}\,A + \text{rank}\,A = n \]
@@ -956,7 +956,7 @@ utgjør et reelt vektorrom. Det vil si at dersom $y_1(t)$ og $y_2(t)$ er løsnin
 \subsection{Løsningsteknikk for homogene likninger}
 \textbf{Teorem 14.2.} Løsningsmengden til
 \[ a_2y''(t) + a_1y'(t) + a_0y(t) = 0 \]
-er et to-dimensjonalt reelt vektorrom som utspennes av følgende lineært uavhengige funksjoner. Dersom $\lambda ^2 + a_1\lambda + a_0 = 0$ har:
+er et to-dimensjonalt reelt vektorrom som utspennes av følgende lineært uavhengige funksjoner. Dersom den karakteristiske likningen $\lambda ^2 + a_1\lambda + a_0 = 0$ har:
 \begin{itemize}
     \item to reelle løsninger $\lambda_1 \neq \lambda_2$:
     \[ y_1(t) = e^{\lambda_1 t}, \ y_2(t) = e^{\lambda_2 t} \]
@@ -982,7 +982,7 @@ der $y_p(t)$ er en partikulær løsning og $y_h(t)$ er en løsning til den tilsv
 \subsection{Wolfram Alpha}
 \href{https://www.wolframalpha.com/input/?i=matrices}{Wolfram Alpha - Matriser}
 
-\subsection{Likningssystem}
+\subsubsection{Likningssystem}
 Et likningssystem kan skrives om til en matrise og løses ved å bruke den inverse.
 \\\\
 Eksempel:
@@ -1010,7 +1010,7 @@ Hvis $A$ er inverterbar, så kan dette løses ved
 \end{align*}
 Dette kan løses direkte i Wolfram.
 
-\subsection{Gausseliminasjon}
+\subsubsection{Gausseliminasjon}
 'row reduce' i Wolfram.
 \\\\
 \href{https://www.wolframalpha.com/input/?i=row+reduce+\%7B\%7B1\%2C+1\%2C+4\%2C+0\%7D\%2C+\%7B1\%2C+2\%2C+6\%2C+1\%7D\%2C+\%7B0\%2C+3\%2C+6\%2C+3\%7D\%7D}{Eksempel}
