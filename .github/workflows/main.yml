@@ -30,9 +30,10 @@ jobs:
       - name: Convert
         uses: docker://pandoc/core:2.9
         with:
-          args: "--mathjax ${{ matrix.node }}.tex -f latex -t html -s -o build/${{ matrix.node }}.html"
+          args: "--mathjax ${{ matrix.file }}.tex -f latex -t html -s -o build/${{ matrix.file }}.html"
   
   deploy:
+      needs: convert_via_pandoc
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
