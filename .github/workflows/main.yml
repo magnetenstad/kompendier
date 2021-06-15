@@ -32,8 +32,8 @@ jobs:
       - name: Convert
         uses: docker://pandoc/core:2.9
         with:
-          args: "--mathjax TMA4115.tex -f latex -t html -s -o TMA4115.html"
-      
+          args: "--mathjax TMA4115.tex -f latex -t html -s -o output/TMA4115.html"
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
