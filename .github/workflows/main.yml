@@ -26,10 +26,11 @@ jobs:
       
       - name: Make output dir
         run: |
-          "mkdir output"
-          "cd output"
-        
-      - uses: docker://pandoc/core:2.9
+          mkdir output
+          cd output
+      
+      - name: Convert
+        uses: docker://pandoc/core:2.9
         with:
           args: "--mathjax TMA4115.tex -f latex -t html -s -o TMA4115.html"
       
