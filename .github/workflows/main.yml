@@ -33,9 +33,9 @@ jobs:
           args: "--mathjax ${{ matrix.file }}.tex -f latex -t html -s -o build/${{ matrix.file }}.html"
   
   deploy:
-      needs: convert_via_pandoc
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.1
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: build # The folder the action should deploy.
+    needs: convert_via_pandoc
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.1.1
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: build # The folder the action should deploy.
