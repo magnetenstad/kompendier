@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Magne Tenstad" />
+  <title>Matematikk 2</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Matematikk 2</h1>
+<p class="author">Magne Tenstad</p>
+</header>
+<h1 id="ulike-koordinatsystemer">Ulike koordinatsystemer</h1>
+<h2 id="kartesiske-koordinater">Kartesiske koordinater</h2>
+<p>Kartesiske koordinater er det vanligste koordinatsystemet. Koordinataksene <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> og <span class="math inline">\(z\)</span> står vinkelrett på hverandre.</p>
+<h2 id="polarkoordinater">Polarkoordinater</h2>
+<p>Polarkoordinater er vanlige å bruke dersom en har å gjøre med sirkulære objekter i <span class="math inline">\(\mathbb{R}^2\)</span>. <span class="math inline">\(r\)</span> bestemmer lengden fra origo, og <span class="math inline">\(\theta\)</span> bestemmer vinkelen. Det omgjøres fra kartesiske koordinater ved <span class="math display">\[\begin{gathered}
+    x = r\cos{\theta}\\
+    y = r\sin{\theta}\\
+    dx\,dy = r\,dr\,d\theta\end{gathered}\]</span> Vanlige grenser er <span class="math display">\[\begin{gathered}
+    0 \leq r \leq R\\
+    0 \leq \theta \leq 2\pi\end{gathered}\]</span> der R er radien til sirkelen.</p>
+<h2 id="sylinderkoordinater">Sylinderkoordinater</h2>
+<p>Sylinderkoordinater er en utvidelse av polarkoordinater, som inkluderer en <span class="math inline">\(z\)</span>-akse. Det omgjøres fra kartesiske koordinater ved <span class="math display">\[\begin{gathered}
+    x = r\cos{\theta}\\
+    y = r\sin{\theta}\\
+    z = z\\
+    dx\,dy\,dz = r\,dr\,d\theta\,dz\end{gathered}\]</span> Vanlige grenser er <span class="math display">\[\begin{gathered}
+    0 \leq r \leq R\\
+    0 \leq \theta \leq 2\pi\\
+    0 \leq z \leq H\end{gathered}\]</span> der R er radien til sylinderen og H er høyden.</p>
+<h2 id="kulekoordinater">Kulekoordinater</h2>
+<p>Kulekoordinater er vanlige å bruke dersom en har å gjøre med kuleformede objekter i <span class="math inline">\(\mathbb{R}^3\)</span>. <span class="math inline">\(\rho\)</span> bestemmer lengden fra origo, <span class="math inline">\(\theta\)</span> bestemmer vinkelen i <span class="math inline">\(xy\)</span>-planet og <span class="math inline">\(\phi\)</span> bestemmer vinkelen i <span class="math inline">\(zr\)</span>-planet. Det omgjøres fra kartesiske koordinater ved <span class="math display">\[\begin{gathered}
+    x = \rho\sin{\phi}\cos{\theta}\\
+    y = \rho\sin{\phi}\sin{\theta}\\
+    z = \rho\cos{\phi}\\
+    dx\,dy\,dz = \rho^2\sin(\phi)\,d\rho\,d\theta\,d\phi\end{gathered}\]</span> Vanlige grenser er <span class="math display">\[\begin{gathered}
+    0 \leq \rho \leq R\\
+    0 \leq \theta \leq 2\pi\\
+    0 \leq \phi \leq \pi\end{gathered}\]</span> der R er radien til kulen.</p>
+<h2 id="jacobi-determinanten">Jacobi-determinanten</h2>
+<p>Gitt en koordinattransformasjon <span class="math display">\[T(u, v) = (x(u, v),\,y(u, v))\]</span> så er Jacobi-determinanten til <span class="math inline">\(T\)</span> definert som <span class="math display">\[\begin{aligned}
+    J(u, v) = \frac{\partial (x, y)}{\partial (u, v)} =
+    \begin{vmatrix}
+        \frac{\partial x}{\partial u} &amp; \frac{\partial x}{\partial v}\\\\
+        \frac{\partial y}{\partial u} &amp; \frac{\partial y}{\partial v}
+    \end{vmatrix}
+    = \frac{\partial x}{\partial u} \frac{\partial y}{\partial v} - \frac{\partial x}{\partial v} \frac{\partial y}{\partial u}\end{aligned}\]</span> og <span class="math display">\[dA = dx\,dy = \left| J(u, v) \right| du\,dv\]</span> Gitt en koordinattransformasjon <span class="math display">\[T(u, v, w) = (x(u, v, w),\,y(u, v, w),\,z(u, v, w))\]</span> så er Jacobi-determinanten til <span class="math inline">\(T\)</span> definert som <span class="math display">\[\begin{aligned}
+    J(u, v, w) = \frac{\partial (x, y, z)}{\partial (u, v, w)} =
+    \begin{vmatrix}
+        \frac{\partial x}{\partial u} &amp; \frac{\partial x}{\partial v} &amp; \frac{\partial x}{\partial w}\\\\
+        \frac{\partial y}{\partial u} &amp; \frac{\partial y}{\partial v} &amp; \frac{\partial y}{\partial w}\\\\
+        \frac{\partial z}{\partial u} &amp; \frac{\partial z}{\partial v} &amp; \frac{\partial z}{\partial w}
+    \end{vmatrix}\end{aligned}\]</span> og <span class="math display">\[dV = dx\,dy\,dz = \left| J(u, v, w) \right| du\,dv\,dw\]</span></p>
+<h3 id="eksempel-polarkoordinater">Eksempel: Polarkoordinater</h3>
+<p>La <span class="math display">\[T(r, \theta) = (r\cos{\theta}, r\sin{\theta})\]</span> da har vi at <span class="math display">\[J(r, \theta) = \frac{\partial (x, y)}{\partial (r, \theta)} =
+    \begin{vmatrix}
+        \frac{\partial (r\cos{\theta})}{\partial r} &amp; \frac{\partial (r\cos{\theta})}{\partial \theta}\\\\
+        \frac{\partial (r\sin{\theta})}{\partial r} &amp; \frac{\partial (r\sin{\theta})}{\partial \theta}
+    \end{vmatrix}
+    =
+    \begin{vmatrix}
+        \cos{\theta} &amp; -r\sin{\theta}\\
+        \sin{\theta} &amp; r\cos{\theta}
+    \end{vmatrix}
+    = r\]</span> og <span class="math display">\[dx\,dy = r\,dr\,d\theta\]</span></p>
+<h3 id="eksempel-oppgave-5-høst-2018">Eksempel: Oppgave 5 Høst 2018</h3>
+<p>Vi ønsker å gjøre transformasjonen <span class="math inline">\(u = x^2 + y^2\)</span>, <span class="math inline">\(v = \frac{y^2}{x}\)</span>. Merk at det her er <span class="math inline">\(u\)</span> og <span class="math inline">\(v\)</span> som er uttrykt ved <span class="math inline">\(x\)</span> og <span class="math inline">\(y\)</span>. Dette gir inverstransformasjonen <span class="math display">\[T^{-1}(x, y) = (x^2+y^2, \frac{y^2}{x})\]</span> da har vi at <span class="math display">\[J&#39;(x, y) = \frac{\partial (u, v)}{\partial (x, y)} =
+    \begin{vmatrix}
+        \frac{\partial (x^2 + y^2)}{\partial x} &amp; \frac{\partial (x^2 + y^2)}{\partial y}\\\\
+        \frac{\partial (\frac{y^2}{x})}{\partial x} &amp; \frac{\partial (\frac{y^2}{x})}{\partial y}
+    \end{vmatrix}
+    =
+    \begin{vmatrix}
+        2x &amp; 2y\\
+        -\frac{y^2}{x^2} &amp; \frac{2y}{x}
+    \end{vmatrix}
+    = 2y \left(2 + \frac{y^2}{x^2}\right)\]</span> der <span class="math inline">\(J&#39;\)</span> er Jacobi-determinanten til inverstransformasjonen <span class="math inline">\(T^{-1}\)</span> Igjen, merk at vi har gjort transformasjonen "andre veien", så <span class="math display">\[du\,dv = |J&#39;(x, y)|\,dx\,dy \,\implies\, dx\,dy = \frac{1}{2y \left(2 + \frac{y^2}{x^2}\right)}\,du\,dv\]</span></p>
+<h1 id="kurver">Kurver</h1>
+<h2 id="buelengde">Buelengde</h2>
+<p>La <span class="math inline">\(C\)</span> være en glatt kurve parametrisert ved <span class="math inline">\(r(t)\)</span>, <span class="math inline">\(a\leq t \leq b\)</span>. Da er lengden av <span class="math inline">\(C\)</span> gitt ved <span class="math display">\[S = \int_a^b \left| r&#39;(t) \right| dt\]</span></p>
+<h2 id="enhetstangent-enhetsnormal-og-krumning">Enhetstangent, enhetsnormal og krumning</h2>
+<p>La <span class="math inline">\(r(t)\)</span> være en glatt parametrisering av en kurve <span class="math inline">\(C\)</span>.</p>
+<ul>
+<li><p>Enhetstangent: <span class="math inline">\(\hat{T}(t) = \frac{r&#39;(t)}{\left| r&#39;(t) \right|}\)</span></p></li>
+<li><p>Enhetsnormal: <span class="math inline">\(\hat{N}(t) = \frac{\hat{T}&#39;(t)}{\left| \hat{T}&#39;(t) \right|}\)</span></p></li>
+<li><p>Krumning: <span class="math inline">\(K(t) = \frac{\left| \hat{T}&#39;(t) \right|}{\left| r&#39;(t) \right|}\)</span></p></li>
+</ul>
+<p>For normalvektor til et plan, se <a href="#Tangentplan og normalvektor" data-reference-type="ref" data-reference="Tangentplan og normalvektor">3.3</a></p>
+<h2 id="areal-av-omdreiningslegeme">Areal av omdreiningslegeme</h2>
+<p>La <span class="math inline">\(C\)</span> være en kurve parametrisert ved <span class="math inline">\(r(t) = (X(t),\,Y(t))\)</span>, <span class="math inline">\(a \leq t \leq b\)</span>.<br />
+<br />
+Overflatearealet <span class="math inline">\(A_x\)</span> som fremkommer ved å dreie <span class="math inline">\(C\)</span> om <span class="math inline">\(x\)</span>-aksen er gitt ved <span class="math display">\[A = 2\pi \int_a^b \left| Y(t) \right| \left| r&#39;(t) \right| dt\]</span> Overflatearealet <span class="math inline">\(A_y\)</span> som fremkommer ved å dreie <span class="math inline">\(C\)</span> om <span class="math inline">\(y\)</span>-aksen er gitt ved <span class="math display">\[A = 2\pi \int_a^b \left| X(t) \right| \left| r&#39;(t) \right| dt\]</span></p>
+<h2 id="areal-omsluttet-av-parametrisk-kurve">Areal omsluttet av parametrisk kurve</h2>
+<p>La <span class="math inline">\(C\)</span> være en kurve parametrisert ved <span class="math inline">\(r(t) = (X(t), Y(t))\)</span>, <span class="math inline">\(a \leq t \leq b\)</span>, og anta at <span class="math inline">\(X(t)\)</span> er deriverbar og <span class="math inline">\(Y(t)\)</span> er kontinuerlig på <span class="math inline">\(\left[ a, b \right]\)</span>. La <span class="math inline">\(A\)</span> være arealet begrenset av <span class="math inline">\(C\)</span>, <span class="math inline">\(x\)</span>-aksen og linjene <span class="math inline">\(x=X(a)\)</span> og <span class="math inline">\(x=X(b)\)</span>. Da gjelder</p>
+<ul>
+<li><p>Hvis <span class="math inline">\(X&#39; \cdot Y \geq 0\)</span> på <span class="math inline">\(\left[ a, b \right]\)</span>, så er <span class="math inline">\(A = \int_a^b X&#39;(t)\,Y(t)\,dt\)</span></p></li>
+<li><p>Hvis <span class="math inline">\(X&#39; \cdot Y \leq 0\)</span> på <span class="math inline">\(\left[ a, b \right]\)</span>, så er <span class="math inline">\(A = -\int_a^b X&#39;(t)\,Y(t)\,dt\)</span></p></li>
+</ul>
+<h1 id="funksjoner-av-flere-variable">Funksjoner av flere variable</h1>
+<h2 id="gradient">Gradient</h2>
+<p>Gradienten til et skalarfelt er et vektorfelt der vektoren i et hvert punkt peker i retningen til den største økningen i skalarfeltet. Lengden av vektoren er et uttrykk for endringen til skalarfeltet i retning av vektoren.<br />
+<br />
+La <span class="math inline">\(F\)</span> være et skalarfelt i <span class="math inline">\(\mathbb{R}^2\)</span>. Da er <span class="math inline">\(\nabla F\)</span> gitt ved <span class="math display">\[\nabla F(x,y) = \left(\frac{\partial F}{\partial x},\,\frac{\partial F}{\partial y} \right)\]</span> La <span class="math inline">\(F\)</span> være et skalarfelt i <span class="math inline">\(\mathbb{R}^3\)</span>. Da er <span class="math inline">\(\nabla F\)</span> gitt ved <span class="math display">\[\nabla F(x,y,z) = \left(\frac{\partial F}{\partial x},\,\frac{\partial F}{\partial y},\,\frac{\partial F}{\partial z} \right)\]</span></p>
+<h2 id="retningsderivert">Retningsderivert</h2>
+<p>La <span class="math inline">\(f\)</span> være deriverbar i <span class="math inline">\(a \in D_f\)</span> og la u være en retningsvektor. Da den retningsderiverte gitt ved <span class="math display">\[D_{u} f(a) = \nabla f(a) \cdot u\]</span></p>
+<h3 id="egenskaper-ved-den-retningsderiverte">Egenskaper ved den retningsderiverte</h3>
+<p>Husk at prikkproduktet mellom to vektorer kan uttrykkes ved vinkelen <span class="math inline">\(\alpha\)</span> mellom dem: <span class="math display">\[D_{u} f(a) = \nabla f(a) \cdot u = \left| \nabla f(a) \right| \left| u \right| \cos{\alpha} = \left| \nabla f(a) \right| \cos{\alpha}\]</span> Dette gir følgende egenskaper:</p>
+<ul>
+<li><p><span class="math inline">\(f\)</span> øker mest når <span class="math inline">\(\alpha = 0\)</span>, altså når <span class="math inline">\(u = \frac{\nabla f(a)}{\left| \nabla f(a) \right|}\)</span>.</p></li>
+<li><p><span class="math inline">\(f\)</span> minker mest når <span class="math inline">\(\alpha = \pi\)</span>, altså når <span class="math inline">\(u = - \frac{\nabla f(a)}{\left| \nabla f(a) \right|}\)</span>.</p></li>
+<li><p><span class="math inline">\(f\)</span> endres ikke når <span class="math inline">\(\alpha = \pi / 2\)</span>, altså når <span class="math inline">\(u \cdot \nabla f(a) = 0\)</span>.</p></li>
+</ul>
+<h2 id="Tangentplan og normalvektor">Tangentplan og normalvektor</h2>
+<p>Likningen for tangentplanet til <span class="math inline">\(z = f(x, y)\)</span> i punktet <span class="math inline">\((a, b, f(a, b))\)</span> er gitt ved <span class="math display">\[z = f(a, b) + \frac{\partial f}{\partial x}(a, b)(x - a) + \frac{\partial f}{\partial y}(a, b)(y - b)\]</span> Normalen til <span class="math inline">\(z = f(x, y)\)</span> i punktet <span class="math inline">\((a, b)\)</span> er gitt ved <span class="math display">\[\hat{N} = \left( \frac{\partial f}{\partial x}(a, b),\,\frac{\partial f}{\partial y}(a, b),\,-1 \right)\]</span> Gitt tre punkter <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> og <span class="math inline">\(C\)</span>, er normalen til planet som dannes av punktene gitt ved kryssproduktet av to vektorer mellom punktene <span class="math display">\[\hat{N} = \overrightarrow{AB} \times \overrightarrow{AC}\]</span></p>
+<h2 id="å-finne-og-klassifisere-punkter">Å finne og klassifisere punkter</h2>
+<h3 id="kritiske-punkter">Kritiske punkter</h3>
+<p>Kritiske punkter for <span class="math inline">\(f\)</span> er punkter der</p>
+<ul>
+<li><p><span class="math inline">\(\nabla f = \overrightarrow{0}\)</span></p></li>
+<li><p>Singulære punkter: der <span class="math inline">\(\nabla f\)</span> er udefinert</p></li>
+</ul>
+<p>Merk! Dersom en skal finne ekstremalpunkter på et lukket område, må en også undersøke randpunktene. Dette gjøres ved parametrisering av randen eller ved Lagranges multiplikatormetode med randen som betingelse.<br />
+<br />
+Indre kritiske punkter (ikke randpunkter) kan klassifiseres ved andrederiverttesten.</p>
+<h3 id="lagranges-multiplikatormetode">Lagranges multiplikatormetode</h3>
+<p>En metode for bestemmelse av ekstremalverdier av en funksjon med flere variabler når disse må oppfylle en eller flere bibetingelser.<br />
+<br />
+Eksempel: Gitt <span class="math inline">\(f(x, y) = 4x + y\)</span>, med betingelse <span class="math inline">\(g(x, y) = x^2 + y^2 - 4 = 0\)</span></p>
+<ol>
+<li><p>La Lagrangefunksjonen <span class="math inline">\(L(x, y, \lambda) = f(x, y) + \lambda g(x, y) = 4x + y + \lambda x^2 + \lambda y^2 - 4 \lambda\)</span></p></li>
+<li><p>Finn løsninger av likningssettet <span class="math inline">\(\nabla L = \overrightarrow{0}\)</span></p></li>
+</ol>
+<p>Løsningene vil være ekstremalpunkter for <span class="math inline">\(f\)</span>. Gitt flere betingelser legger man dem til i <span class="math inline">\(L\)</span>, med hver sin variabel.</p>
+<h3 id="andrederiverttesten">Andrederiverttesten</h3>
+<p>La <span class="math inline">\(f(x, y)\)</span> være en funksjon av to variabler. Anta at <span class="math inline">\((a, b)\)</span> er et indre kritisk punkt og at de andrederiverte av f er kontinuerlige i nærheten av <span class="math inline">\((a, b)\)</span>. Sett <span class="math display">\[\begin{aligned}
+    A &amp;= \frac{\partial^2 f}{\partial x^2} (a, b),\\
+    B &amp;= \frac{\partial^2 f}{\partial x\,\partial y} (a, b) = \frac{\partial^2 f}{\partial x\,\partial y} (a, b)\\
+    C &amp;= \frac{\partial^2 f}{\partial y^2} (a, b),\end{aligned}\]</span> og <span class="math display">\[D = AC-B^2\]</span> Da gjelder:</p>
+<ol>
+<li><p>Hvis <span class="math inline">\(D &lt; 0\)</span>, så er <span class="math inline">\((a, b)\)</span> et sadelpunkt.</p></li>
+<li><p>Hvis <span class="math inline">\(D &gt; 0\)</span> og <span class="math inline">\(A &gt; 0\)</span>, så er <span class="math inline">\((a, b)\)</span> et lokalt minimumspunkt.</p></li>
+<li><p>Hvis <span class="math inline">\(D &gt; 0\)</span> og <span class="math inline">\(A &lt; 0\)</span>, så er <span class="math inline">\((a, b)\)</span> et lokalt maksimumspunkt.</p></li>
+<li><p>Hvis <span class="math inline">\(D = 0\)</span> gir testen ingen konklusjon.</p></li>
+</ol>
+<h2 id="linjeintegral">Linjeintegral</h2>
+<p>Linjeintegralet av et skalarfelt <span class="math inline">\(f = f(x, y, z)\)</span> langs en kurve <span class="math inline">\(C \subset \mathbb{R}^3\)</span> gitt ved en glatt parametrisering <span class="math inline">\(r(t)\)</span>, <span class="math inline">\(t \in [a,b]\)</span> er gitt ved <span class="math display">\[\int_c f\,ds = \int_a^b f(r(t))\,\left| r&#39;(t) \right| dt\]</span></p>
+<h3 id="lengde-av-kurve">Lengde av kurve</h3>
+<p>Det følger at lengden av en kurve <span class="math inline">\(C \subset \mathbb{R}^3\)</span> gitt ved en glatt parametrisering <span class="math inline">\(r(t)\)</span>, <span class="math inline">\(t \in [a,b]\)</span> er gitt ved <span class="math display">\[\int_c 1\,ds = \int_a^b \left| r&#39;(t) \right| dt\]</span></p>
+<h3 id="masse-av-streng">Masse av streng</h3>
+<p>Dersom <span class="math inline">\(\delta\)</span> angir massetetthet per lengdeenhet, og kurven <span class="math inline">\(C \subset \mathbb{R}^3\)</span> gitt ved en glatt parametrisering <span class="math inline">\(r(t)\)</span>, <span class="math inline">\(t \in [a,b]\)</span> angir posisjonen til en streng i rommet, er massen til strengen gitt ved <span class="math display">\[m = \int_c \delta\,ds = \int_a^b \delta (r(t))\,\left| r&#39;(t) \right| dt\]</span></p>
+<h2 id="flateintegral">Flateintegral</h2>
+<p>Flateintegralet av et skalarfelt <span class="math inline">\(f = f(x, y, z)\)</span> over en flate <span class="math inline">\(S \subset \mathbb{R}^3\)</span> gitt ved en parametrisering <span class="math inline">\(r(u, v)\)</span>, <span class="math inline">\(u_0 \leq u \leq u_1\)</span>, <span class="math inline">\(v_0 \leq v \leq v_1\)</span> er gitt ved <span class="math display">\[\iint_S f\,dS=\int_{v_0}^{v_1}\int_{u_0}^{u_1} f(r(u,v)) \left| \frac{\partial r}{\partial u} \times \frac{\partial r}{\partial v} \right|\,du\,dv\]</span> der <span class="math display">\[\begin{aligned}
+    \frac{\partial r}{\partial u} &amp;= \left( \frac{\partial x(u, v)}{\partial u},\, \frac{\partial y(u, v)}{\partial u},\, \frac{\partial z(u, v)}{\partial u} \right)\\
+    \frac{\partial r}{\partial v} &amp;= \left( \frac{\partial x(u, v)}{\partial v},\, \frac{\partial y(u, v)}{\partial v},\, \frac{\partial z(u, v)}{\partial v} \right)\end{aligned}\]</span></p>
+<h3 id="areal-av-flate">Areal av flate</h3>
+<p>Det følger at arealet av en flate <span class="math inline">\(S \subset \mathbb{R}^3\)</span> gitt ved en parametrisering <span class="math inline">\(r(x, y) = (x, y, f(x, y))\)</span>, <span class="math inline">\(x_0 \leq x \leq x_1\)</span>, <span class="math inline">\(y_0 \leq y \leq y_1\)</span> er gitt ved <span class="math display">\[\begin{aligned}
+    \iint_S 1\,dS &amp;= \int_{y_0}^{y_1}\int_{x_0}^{x_1} \left| \frac{\partial r}{\partial x} \times \frac{\partial r}{\partial y} \right|\,dx\,dy\\
+    &amp;= \int_{y_0}^{y_1}\int_{x_0}^{x_1} \sqrt{1 + \left(\frac{\partial f}{\partial x}\right)^2 + \left(\frac{\partial f}{\partial y}\right)^2}\,dx\,dy\end{aligned}\]</span></p>
+<h3 id="masse-av-flate">Masse av flate</h3>
+<p>Dersom <span class="math inline">\(\delta = \delta(x, y, z)\)</span> angir massetetthet per lengdeenhet, og flaten <span class="math inline">\(S \subset \mathbb{R}^3\)</span> er gitt ved en parametrisering <span class="math inline">\(r(x, y) = (x, y, f(x, y))\)</span>, <span class="math inline">\(x_0 \leq x \leq x_1\)</span>, <span class="math inline">\(y_0 \leq y \leq y_1\)</span>, er massen av flaten gitt ved <span class="math display">\[\begin{aligned}
+    \iint_S \delta\,dS &amp;= \int_{y_0}^{y_1}\int_{x_0}^{x_1} \delta(x, y, f(x, y))\, \left| \frac{\partial r}{\partial x} \times \frac{\partial r}{\partial y} \right|\,dx\,dy\\
+    &amp;= \int_{y_0}^{y_1}\int_{x_0}^{x_1} \delta(x, y, f(x, y))\, \sqrt{1 + \left(\frac{\partial f}{\partial x}\right)^2 + \left(\frac{\partial f}{\partial y}\right)^2}\,dx\,dy\end{aligned}\]</span></p>
+<h2 id="middelverdisetningen">Middelverdisetningen</h2>
+<p>Anta at <span class="math inline">\(f(x, y)\)</span> er kontinuerlig på et lukket, begrenset og sammenhengende område <span class="math inline">\(D \in \mathbb{R}^2\)</span>. Da finnes det et punkt <span class="math inline">\((x_0, y_0) \in D\)</span> der <span class="math inline">\(f\)</span> tar sin middelverdi (gjennomsnittsverdi), gitt ved <span class="math display">\[\overline{f} = f(x_0, y_0) = \frac{1}{areal(D)}\,\iint_D f(x, y)\,dA\]</span></p>
+<h2 id="massesenter">Massesenter</h2>
+<p>Gitt en masse <span class="math inline">\(m = f(\delta)\)</span>, er massesenteret gitt ved <span class="math display">\[(\overline{x}, \overline{y}, \overline{z}) = \left( \frac{f(x\delta)}{m}, \frac{f(y\delta)}{m}, \frac{f(z\delta)}{m} \right)\]</span></p>
+<h1 id="vektorfelt">Vektorfelt</h1>
+<h2 id="divergens">Divergens</h2>
+<p>Divergens gir størrelsen til en kilde eller et sluk i et gitt punkt i et vektorfelt, i form av en skalar med fortegn.<br />
+<br />
+La <span class="math inline">\(F(x, y) = \left(f_1(x, y), f_2(x, y)\right)\)</span>. Da er divergensen gitt ved <span class="math display">\[\nabla \cdot F = \frac{\partial f_1}{\partial x} + \frac{\partial f_2}{\partial y}\]</span> La <span class="math inline">\(F(x, y, z) = \left(f_1(x, y, z), f_2(x, y, z), f_3(x, y, z)\right)\)</span>. Da er divergensen gitt ved <span class="math display">\[\nabla \cdot F = \frac{\partial f_1}{\partial x} + \frac{\partial f_2}{\partial y} + \frac{\partial f_3}{\partial z}\]</span></p>
+<h3 id="Divergensteoremet">Divergensteoremet</h3>
+<p>La <span class="math inline">\(D\)</span> være et regulært område i <span class="math inline">\(\mathbb{R}^3\)</span> med rand <span class="math inline">\(S = \partial D\)</span> som er en orientert og lukket flate, der enhetsnormalen <span class="math inline">\(\hat{N}\)</span> peker ut av <span class="math inline">\(D\)</span>. Hvis <span class="math inline">\(F\)</span> er et glatt vektorfelt definert på <span class="math inline">\(D\)</span>, så er <span class="math display">\[\iiint_D \nabla \cdot F\,dV = \iint_S F \cdot \hat{N}\,dS\]</span></p>
+<h3 id="divergensteoremet-i-planet">Divergensteoremet i planet</h3>
+<p>La <span class="math inline">\(R\)</span> være et regulært område i <span class="math inline">\(xy\)</span>-planet. Anta at randen <span class="math inline">\(C = \partial R\)</span> består av en eller flere glatte, enkle, lukkede kurver som er positivt orienterte med hensyn på <span class="math inline">\(R\)</span>. La <span class="math inline">\(\hat{N}\)</span> være den ytre enhetsnormalen på <span class="math inline">\(C\)</span>. Hvis <span class="math inline">\(F(x, y)=(f_1(x, y), f_2(x, y))\)</span> er et glatt vektorfelt definert på <span class="math inline">\(R\)</span>, så er <span class="math display">\[\iint_R \nabla \cdot F\,dA = \oint_C F \cdot \hat{N}\,ds\]</span></p>
+<h2 id="curl">Curl</h2>
+<p>Curl beskriver den infinitesimale rotasjonen av et vektorfelt, i form av en vektor i ethvert punkt i feltet. Egenskapene til denne vektoren (lengden og retningen) beskriver rotasjonen i punktet.<br />
+<br />
+La <span class="math inline">\(F(x, y) = \left(f_1(x, y), f_2(x, y)\right)\)</span>. Da er curlen gitt ved <span class="math display">\[\nabla \times F = \left(0, 0, \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} \right)\]</span> La <span class="math inline">\(F(x, y, z) = \left(f_1(x, y, z), f_2(x, y, z), f_3(x, y, z)\right)\)</span>. Da er curlen gitt ved <span class="math display">\[\nabla \times F = \left( \frac{\partial f_3}{\partial y} - \frac{\partial f_2}{\partial z}, \frac{\partial f_1}{\partial z} - \frac{\partial f_3}{\partial x}, \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} \right)\]</span></p>
+<h3 id="Stokes&#39; teorem">Stokes’ teorem</h3>
+<p>La <span class="math inline">\(S\)</span> være en stykkevis glatt, orientert flate i <span class="math inline">\(\mathbb{R}^3\)</span> med enhetsnormal <span class="math inline">\(\hat{N}\)</span>, der randen til <span class="math inline">\(S\)</span>, <span class="math inline">\(C = \partial S\)</span>, består av en eller flere stykkevis glatte, lukkede kurver med orientering bestemt av orienteringen til <span class="math inline">\(S\)</span>. Hvis <span class="math inline">\(F\)</span> er glatt på en åpen mengde som inneholder <span class="math inline">\(S\)</span>, så er <span class="math display">\[\oint_C F \cdot dr = \iint_S (\nabla \times F) \cdot \hat{N}\,dS\]</span></p>
+<h3 id="Greens Teorem">Greens Teorem (Stokes’ teorem i planet)</h3>
+<p>La <span class="math inline">\(S\)</span> være et regulært område i <span class="math inline">\(xy\)</span>-planet. Anta at randen <span class="math inline">\(C\)</span> består av en eller flere stykkevis glatte, enkle, lukkede kurver med positiv orientering med hensyn på <span class="math inline">\(R\)</span>. Hvis <span class="math inline">\(F(x, y) = ((f_1(x, y), f_2(x, y))\)</span> er et glatt vektorfelt definert på <span class="math inline">\(R\)</span>, så er <span class="math display">\[\begin{aligned}
+    \iint_R \left( \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} \right) &amp;= \oint_C f_1(x, y)\,dx + f_2(x, y)\,dy\\
+    &amp;= \oint_C F \cdot dr\end{aligned}\]</span></p>
+<h2 id="konservative-vektorfelt">Konservative vektorfelt</h2>
+<p>Et vektorfelt <span class="math inline">\(F\)</span> i et område <span class="math inline">\(D \subseteq \mathbb{R}^3\)</span> er konservativt hvis og bare hvis det finnes et skalarfelt <span class="math inline">\(\phi\)</span> slik at <span class="math display">\[F(x,y,z) = \nabla \phi(x, y, z)\]</span> for alle <span class="math inline">\((x, y, z) \in D\)</span>. Vi kaller <span class="math inline">\(\phi\)</span> en potensialfunksjon for <span class="math inline">\(F\)</span> i <span class="math inline">\(D\)</span>.<br />
+<br />
+Det er verdt å merke seg at for et konservativt vektorfelt <span class="math inline">\(F\)</span> så er <span class="math inline">\(\nabla \times F = \overrightarrow{0}\)</span><br />
+<br />
+For et konservativt vektorfelt <span class="math inline">\(F\)</span> med en potensialfunksjon <span class="math inline">\(\phi\)</span>, og en kurve <span class="math inline">\(C\)</span> parameterisert ved <span class="math inline">\(r(t)\)</span>, <span class="math inline">\(a \leq t \leq b\)</span> gjelder <span class="math display">\[\int_C F \cdot dr = \phi(b) - \phi(a)\]</span> dette henger sammen ved at for konservative vektorfelt er integralet uavhengig av veivalget <em>mellom</em> start- og endepunkt av kurven.</p>
+<h2 id="linjeintegral-i-vektorfelt">Linjeintegral i vektorfelt</h2>
+<p>Linjeintegralet av et vektorfelt <span class="math inline">\(F\)</span> langs en kurve <span class="math inline">\(C \subset \mathbb{R}^3\)</span> gitt ved en glatt parametrisering <span class="math inline">\(r(t)\)</span>, <span class="math inline">\(t \in [a, b]\)</span> er gitt ved <span class="math display">\[\int_C F \cdot dr = \int_a^b F(r(t)) \cdot \frac{\partial r}{\partial t}\,dt\]</span> Om C er lukket (eller "kan lukkes") kan Stokes’ Teorem <a href="#Stokes&#39; teorem" data-reference-type="ref" data-reference="Stokes&#39; teorem">4.2.1</a> eller Greens Teorem <a href="#Greens Teorem" data-reference-type="ref" data-reference="Greens Teorem">4.2.2</a> være nyttig.<br />
+<br />
+Alternativt kan linjeintegralet uttrykkes ved enhetstangenten til <span class="math inline">\(r\)</span>, <span class="math inline">\(\hat{T}\)</span> <span class="math display">\[\int_C F \cdot dr = \int_C F \cdot \hat{T}\,ds\]</span></p>
+<h2 id="flateintegral-i-vektorfelt">Flateintegral i vektorfelt</h2>
+<p>For et vektorfelt <span class="math inline">\(F\)</span> er fluksen gjennom en orientert flate <span class="math inline">\(S\)</span> gitt ved <span class="math display">\[\iint_S F \cdot \hat{N}\,dS\]</span> der <span class="math inline">\(\hat{N}\)</span> er enhetsnormalen til <span class="math inline">\(S\)</span> i positiv retning i forhold til orienteringen av <span class="math inline">\(S\)</span>.<br />
+<br />
+Om S er lukket (eller "kan lukkes") kan Divergensteoremet <a href="#Divergensteoremet" data-reference-type="ref" data-reference="Divergensteoremet">4.1.1</a> være nyttig.</p>
+</body>
+</html>
