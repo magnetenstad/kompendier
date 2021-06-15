@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Magne Tenstad" />
+  <title>Krets og digitalteknikk</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Krets og digitalteknikk</h1>
+<p class="author">Magne Tenstad</p>
+</header>
+<h1 id="krets">Krets</h1>
+<h2 id="terminologi-og-definisjoner">Terminologi og definisjoner</h2>
+<h3 id="symboler-og-enheter">Symboler og enheter</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Enhet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Ladning</td>
+<td style="text-align: center;">Q</td>
+<td style="text-align: center;">C, coulomb</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Strøm</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">A, ampere</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Resistans</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;"><span class="math inline">\(\Omega\)</span>, ohm</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Spenning</td>
+<td style="text-align: center;">U</td>
+<td style="text-align: center;">V, volt</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Energi</td>
+<td style="text-align: center;">W</td>
+<td style="text-align: center;">J, joule</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Effekt</td>
+<td style="text-align: center;">P</td>
+<td style="text-align: center;">W, watt</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Konduktans</td>
+<td style="text-align: center;">G</td>
+<td style="text-align: center;">S, siemens</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Fluks</td>
+<td style="text-align: center;"><span class="math inline">\(\Phi\)</span></td>
+<td style="text-align: center;">Wb, weber</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Induktans</td>
+<td style="text-align: center;">L</td>
+<td style="text-align: center;">H, henry</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Kapitans</td>
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">F, farad</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Feltstyrke</td>
+<td style="text-align: center;"><span class="math inline">\(\epsilon\)</span></td>
+<td style="text-align: center;">V/m</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ulike-typer-komponenter">Ulike typer komponenter</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Komponent</th>
+<th style="text-align: center;">Aktiv / Passiv</th>
+<th style="text-align: center;">Lineær / Ulineær</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Spenningskilder</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Lineær</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Strømkilder</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Lineær</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Resistanser</td>
+<td style="text-align: center;">Passiv</td>
+<td style="text-align: center;">Lineær</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Spoler</td>
+<td style="text-align: center;">Passiv</td>
+<td style="text-align: center;">Lineær</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Kondensatorer</td>
+<td style="text-align: center;">Passiv</td>
+<td style="text-align: center;">Lineær</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Dioder</td>
+<td style="text-align: center;">Aktiv</td>
+<td style="text-align: center;">Ulineær</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Transistorer</td>
+<td style="text-align: center;">Aktiv</td>
+<td style="text-align: center;">Ulineær</td>
+</tr>
+</tbody>
+</table>
+<h3 id="passiv-fortegnskonvensjon">Passiv fortegnskonvensjon</h3>
+<p>Når referanseretningen for strømmen gjennom et kretselement er i samme retning som referansespenningsfallet over elementet (inn på positiv terminal, ut på negativ), skal positivt fortegn brukes i uttrykk som relaterer spenningen til strømmen. Ellers skal negativt fortegn brukes.</p>
+<h3 id="ohms-lov">Ohms lov</h3>
+<p>Proposjonalitet mellom spenning over og strøm gjennom en motstand. <span class="math display">\[U = R \cdot I\]</span> med <span class="math inline">\(P = U \cdot I\)</span> følger det at <span class="math display">\[P = R \cdot I^2\]</span> og at <span class="math display">\[P = \frac{U^2}{R}\]</span></p>
+<h3 id="konduktans">Konduktans</h3>
+<p>Konduktans angir ledningsevne, og er gitt ved <span class="math display">\[G = \frac{1}{R}\]</span> Konduktans kan være praktisk der resistansen er og skal være lav.</p>
+<h3 id="resistans">Resistans</h3>
+<p>Total resistans i seriekobling er gitt ved <span class="math display">\[\begin{aligned}
+    R_{ser} &amp;= \sum_i R_i \\
+    &amp;= R_1 + R_2 + ... + R_n\end{aligned}\]</span> Total resistans i parallellkobling er gitt ved <span class="math display">\[\begin{aligned}
+    R_{par} &amp;= \left( \sum_i \frac{1}{R_i} \right)^{-1} \\
+    &amp;= \left(\frac{1}{R_1} + \frac{1}{R_2} + ... + \frac{1}{R_n}\right)^{-1}\end{aligned}\]</span> Dersom kretsen ikke kan beskrives ved en kombinasjon av serie og parallellkoblinger, må det gjøres en tilnærming. Eks: H20 Oppgave 1.</p>
+<h2 id="strømdeling">Strømdeling</h2>
+<p>I en seriekobling er strømmen konstant.<br />
+<br />
+La <span class="math inline">\(I\)</span> være den totale strømmen gjennom en parallellkobling, <span class="math inline">\(R_{par}\)</span> være den totale resistansen i koblingen og <span class="math inline">\(R&#39;\)</span> være resistansen i en gren. Da er strømmen gjennom grenen gitt ved <span class="math display">\[I&#39; = I \, \frac{R_{par}}{R&#39;}\]</span></p>
+<h2 id="spenningsdeling">Spenningsdeling</h2>
+<p>I en parallellkobling er spenningen konstant.<br />
+<br />
+La <span class="math inline">\(U\)</span> være den totale strømmen gjennom en seriekobling, <span class="math inline">\(R_{ser}\)</span> være den totale resistansen i koblingen og <span class="math inline">\(R&#39;\)</span> være en resistansen til en komponent. Da er spenningen over komponenten gitt ved <span class="math display">\[U&#39; = U \, \frac{R&#39;}{R_{ser}}\]</span></p>
+<h2 id="spole">Spole</h2>
+<p>Ved <span class="math inline">\(t = 0\)</span> er det kontinuitet i spolestrømmen. Ved <span class="math inline">\(t \rightarrow \infty \implies u(t) \rightarrow 0\)</span> (kortslutning)<br />
+<br />
+Fluksen gjennom en spole er gitt ved <span class="math display">\[\Phi = L \cdot I\]</span> Spenning <span class="math display">\[u(t) = L \cdot i\,&#39;(t)\]</span> Strøm <span class="math display">\[i(t) = I_0+\frac{1}{L}\,\int_{t_0}^t u(x)\,dx\]</span> Energien i en spole er gitt ved <span class="math display">\[W = \frac{1}{2}\,L\,I^2\]</span></p>
+<h2 id="kondensator">Kondensator</h2>
+<p>Ved <span class="math inline">\(t = 0\)</span> er det kontinuitet i kondensatorspenning. Ved <span class="math inline">\(t \rightarrow \infty \implies i(t) \rightarrow 0\)</span> (åpen sløyfe)<br />
+<br />
+Spenningsdifferansen i en kondensator produserer et elektrisk felt. Feltstyrken er gitt ved <span class="math display">\[\epsilon = \frac{U}{d}\]</span> der <span class="math inline">\(d\)</span> er avstanden.<br />
+<br />
+Strøm <span class="math display">\[i(t) = C \cdot u\,&#39;(t)\]</span> Spenning <span class="math display">\[u(t) = U_0+\frac{1}{C}\,\int_{t_0}^t i(x)\,dx\]</span> Energien i en kondensator er gitt ved <span class="math display">\[W = \frac{1}{2}\,C\,U^2\]</span></p>
+<h3 id="kapitans">Kapitans</h3>
+<p>Er gitt ved <span class="math display">\[C = \frac{Q}{U}\]</span> Total kapitans i seriekobling er gitt ved <span class="math display">\[\begin{aligned}
+    C_{ser} &amp;= \left( \sum_i \frac{1}{C_i} \right)^{-1} \\
+    &amp;= \left(\frac{1}{C_1} + \frac{1}{C_2} + ... + \frac{1}{C_n}\right)^{-1}\end{aligned}\]</span> Total kapitans i parallellkobling er gitt ved <span class="math display">\[\begin{aligned}
+    C_{par} &amp;= \sum_i C_i \\
+    &amp;= C_1 + C_2 + ... + C_n\end{aligned}\]</span></p>
+<h2 id="kirchhoffs-lover">Kirchhoffs lover</h2>
+<h3 id="strømloven">Strømloven</h3>
+<p>I et forgreningspunkt er summen av strømmer inn lik summen av strømmer ut. Alternativt, la <span class="math inline">\(I_i\)</span> angi strømmer inn til et forgreningspunkt, da gjelder <span class="math display">\[\sum_i I_i = 0\]</span></p>
+<h3 id="spenningsloven">Spenningsloven</h3>
+<p>Summen av alle spenningsendringer i en sløyfe er lik 0. La <span class="math inline">\(U_i\)</span> angi spenninger over komponentene i en sløyfe, da gjelder <span class="math display">\[\sum_i U_i = 0\]</span></p>
+<h2 id="kildekonvertering">Kildekonvertering</h2>
+<h3 id="thévenin-ekvivalent">Thévenin-ekvivalent</h3>
+<ol>
+<li><p>Definer og marker utgangsterminalgrensesnittet (typisk mot lastmotstanden).</p></li>
+<li><p>Fjern alt utenfor terminalgrensesnittet.</p></li>
+<li><p>Regn ut spenningen mellom de åpne terminalene. Dette er <span class="math inline">\(U_{Th}\)</span>.</p></li>
+<li><p>Kortslutt terminalene, og regn ut kortslutningsstrømmen <span class="math inline">\(I_k\)</span>. <span class="math inline">\(R_{Th}\)</span> er gitt ved <span class="math inline">\(\frac{U_{Th}}{I_k}\)</span>.</p></li>
+</ol>
+<p>Alternativt kan en finne <span class="math inline">\(R_{Th}\)</span> ved å nullstille alle kildene og regne ut resistansen mellom åpne terminaler.<br />
+<br />
+Den ekvivalente Thévenin-kretsen er da bygget opp av en spenningskilde med <span class="math inline">\(U_{Th}\)</span> og en resistans <span class="math inline">\(R_{Th}\)</span> i serie.</p>
+<h3 id="norton-ekvivalent">Norton-ekvivalent</h3>
+<p>Finn <span class="math inline">\(U_{Th}\)</span> og <span class="math inline">\(R_{Th}\)</span> på samme måte som i en Thévenin-ekvivalent.<br />
+<br />
+Den ekvivalente Norton-kretsen er da bygget opp av en strøm med <span class="math inline">\(I = \frac{U_{Th}}{R_{Th}}\)</span> og en resistans <span class="math inline">\(R_{Th}\)</span> i parallell.</p>
+<h2 id="avhengige-spennings--og-strømkilder">Avhengige spennings- og strømkilder</h2>
+<p>Disse er kilder som ikke har fast verdi. Verdien er proposjonal med en styrestrøm eller styrespenning et annet sted i koblingen.</p>
+<ul>
+<li><p>Spenningsforsterkning: <span class="math inline">\(U_0 = A \cdot U_x\)</span></p></li>
+<li><p>Strømforsterkning: <span class="math inline">\(I_0 = B \cdot I_x\)</span></p></li>
+<li><p>Transkonduktans: <span class="math inline">\(I_0 = g \cdot U_x\)</span></p></li>
+<li><p>Transresistans: <span class="math inline">\(U_0 = r \cdot I_x\)</span></p></li>
+</ul>
+<h2 id="knutespenningsmetoden">Knutespenningsmetoden</h2>
+<p>En systematisk fremgangsmåte for å analysere en vilkårlig kobling. Metoden virker likevel ikke for grener med spenningskilde uten resistans, da anvender vi superknutemetoden.</p>
+<ol>
+<li><p>Finn og marker alle forgreningspunkter. Ett av disse skal være jordreferanse. Resten skal indekseres <span class="math inline">\(a, b, c, ...\)</span> . Jord er ofte negativ terminal på en kilde.</p></li>
+<li><p>Bruker Kirchhoffs 1. lov (strømloven) i hvert indekserte knutepunkt. Sett opp uttrykk for hver av grenstrømmene ved hjelp av spenningsreferansen mot forgreningspunktet i motsatt ende av grenen.</p></li>
+<li><p>Resultatet er <span class="math inline">\(n\)</span> knutelikninger der det finnes <span class="math inline">\(n\)</span> ulike knutespenninger. Disse ordnes i et likningssett og løses ved for eksempel innsetting, Gauss-eliminasjon, Cramers regel eller matriseinvertering.</p></li>
+<li><p>Grenstrømmene kan eventuelt finnes ved hjelp av Ohms lov og andre regler.</p></li>
+</ol>
+<h2 id="superknutemetoden">Superknutemetoden</h2>
+<p>Superknutemetoden er en versjon av knutespenningsmetoden som brukes for grener med spenningskilde utens resistans. Metoden går ut på å definere en felles <em>superknute</em> for forgreningspunktene på hver side av spenningskilden. Obs: dette gir flere ukjente enn likninger, men man bruker spenningsdiffereransen mellom forgreningspunktene som tilleggslikning.</p>
+<h2 id="superposisjonsmetoden">Superposisjonsmetoden</h2>
+<p>Superposisjonsmetoden kan <strong>ikke</strong> brukes dersom det er ulineære komponenter i koblingen.</p>
+<ol>
+<li><p>Velg ut en kilde, og nullstill alle de andre.</p>
+<ul>
+<li><p>Nullstille spenningskilde: <span class="math inline">\(U = 0V\)</span>, dvs. kortslutning.</p></li>
+<li><p>Nullstille strømkilde: <span class="math inline">\(I = 0A\)</span>, dvs åpen sløyfe / brudd.</p></li>
+</ul>
+<p>Analyser denne koblingen med tanke på den aktuelle strømmen eller spenningen. Resultat: strømbidrag / spenningsbidrag.</p></li>
+<li><p>Repeter steg 1 for alle kilder etter tur.</p></li>
+<li><p>Delbidragene skal adderes for å finne den aktuelle strømmen / spenningen.</p></li>
+</ol>
+<h2 id="effektiv-verdi---rms">Effektiv verdi - RMS</h2>
+<p>Effektiv verdi, eller Root Mean Square, er den konstante verdien som leverer samme effekt som et varierende DC-signal ville levert i den samme belastningen.<br />
+<br />
+La <span class="math inline">\(V(t)\)</span> være et varierende signal med periode <span class="math inline">\(T\)</span>. Da er effektiv verdi gitt ved <span class="math display">\[V_{RMS} = \sqrt{\frac{\int_0^T V(t)\,dt}{T}}\]</span> RMS for noen vanlige signaler</p>
+<ul>
+<li><p>Sinussignal med amplitude A: <span class="math inline">\(V_{EFF} = \frac{A}{\sqrt{2}}\)</span></p></li>
+<li><p>Sagtannsignal med amplitude A: <span class="math inline">\(V_{EFF} = \frac{A}{\sqrt{3}}\)</span></p></li>
+<li><p>Firkantsignal med amplitude A: <span class="math inline">\(V_{EFF} = A\)</span></p></li>
+</ul>
+<h2 id="pmos--og-nmos-transistorer">PMOS- og NMOS-transistorer</h2>
+<h2 id="hvordan-disse-kan-brukes-som-brytere">Hvordan disse kan brukes som brytere</h2>
+<p>Virkemåten er baser på at konduktiviteten (ledningsevnen) til en ledende kanal i halvlederen kan varieres ved at en ekstern spenning (gate-spenningen) varieres. Anrikningstype MOSFET er normalt av (ingen ledende kanal) og transistoren fungerer som en åpen bryter mellom Drain og Source. Ved å påtrykke en negativ spenning på Gate i en PMOS-transistor opprettes en p-kanal mellom Drain og Source og transistoren fungerer da som en lukket bryter sett mellom Drain og Source. I en NMOS-transistor må det påtrykkes en positiv spenning på Gate for å opprette en n-kanal mellom Drain og Source. At kanalene (P-kanal og N-kanal) opprettes skyldes felteffekt. Transistoren styres vha Gate-spenningen. Det går ingen strøm inn i Gate pga det isolerende oksid-laget.</p>
+<h2 id="maksimal-frekvens">Maksimal frekvens</h2>
+<p>Det vil alltid være en viss motstand i n-kanalen og p-kanalen som genereres. Denne motstanden kan ekvivaleres med en R. Mellom Gate og halvlederen etableres det en ladning på hver side av oksid-laget. Dette gir opphav til en kapasitans C. Å opprette ladning eller flytte ladning vil ta en viss tid gitt av størrelsen på R og C i vår enkle modell. Hastigheten på hvor fort transistorene kan slås av/på er gitt av tidskonstanten av type <span class="math inline">\(\tau = RC\)</span>.</p>
+<h2 id="cmos-transistor-og-inverterer">CMOS-transistor og inverterer</h2>
+<p>Kombinasjonen av PMOS- og NMOS-transistorer danner et komplementært sett av transistorer som kalles CMOS-transistorer (Complementary Metal Oxide Semiconductor). I dette tilfellet er disse transistorene brukt i en inverter.</p>
+<h1 id="digitalteknikk">Digitalteknikk</h1>
+<h2 id="toerkomplement">Toerkomplement</h2>
+<p>I et tall på binær toerkomplement-form teller det første bitet negativt.<br />
+<br />
+Omgjøring mellom standard binær og toerkomplement (og tilbake!) gjøres ved <span class="math display">\[T = \overline{B} + 1\]</span></p>
+<table>
+<caption>Sign-magnitude og 2’s komplement</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Desimaltall</th>
+<th style="text-align: center;">Binærtall</th>
+<th style="text-align: center;">Binærtall</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Sign-magnitude</td>
+<td style="text-align: center;">2’s komplement</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0111</td>
+<td style="text-align: center;">0111</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0110</td>
+<td style="text-align: center;">0110</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0101</td>
+<td style="text-align: center;">0101</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0100</td>
+<td style="text-align: center;">0100</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0011</td>
+<td style="text-align: center;">0011</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0010</td>
+<td style="text-align: center;">0010</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0001</td>
+<td style="text-align: center;">0001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0000 / 1000</td>
+<td style="text-align: center;">0000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-1</td>
+<td style="text-align: center;">1001</td>
+<td style="text-align: center;">1111</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-2</td>
+<td style="text-align: center;">1010</td>
+<td style="text-align: center;">1110</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-3</td>
+<td style="text-align: center;">1011</td>
+<td style="text-align: center;">1101</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-4</td>
+<td style="text-align: center;">1100</td>
+<td style="text-align: center;">1100</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-5</td>
+<td style="text-align: center;">1101</td>
+<td style="text-align: center;">1011</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-6</td>
+<td style="text-align: center;">1110</td>
+<td style="text-align: center;">1010</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-7</td>
+<td style="text-align: center;">1111</td>
+<td style="text-align: center;">1001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-8</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">1000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mintermer-og-makstermer">Mintermer og makstermer</h2>
+<p>En minterm <span class="math inline">\(m_i\)</span> har den egenskapen at den er lik 1 i nøyaktig én rad i sannhetstabellen. En maksterm <span class="math inline">\(M_i\)</span> er lik 0 i nøyaktig én rad i sannhetstabellen.<br />
+<br />
+Eksempel:</p>
+<ul>
+<li><p><span class="math inline">\(F = \overline{x}\overline{y}\overline{z} + \overline{x}\overline{y}z + xyz\)</span></p></li>
+<li><p><span class="math inline">\(F = m_0 + m_1 + m_2 = \sum \, (0, 1, 7)\)</span></p></li>
+<li><p><span class="math inline">\(F = M_2 \cdot M_3 \cdot M_4 \cdot M_5 \cdot M_6 = \prod \, (2, 3, 4, 5, 6)\)</span></p></li>
+</ul>
+<h2 id="karnaughdiagram-og-kubediagram">Karnaughdiagram og kubediagram</h2>
+<h2 id="tabellmetoden">Tabellmetoden</h2>
+<h2 id="overflyt">Overflyt</h2>
+<p>Hvis man legger sammen to tall A og B med samme fortegn, men R får forskjellig fortegn, har man overflyt. Da er resultatet ugyldig.</p>
+<h2 id="oppsetningstid-og-holdetid">Oppsetningstid og holdetid</h2>
+<p>Oppsetningstid er tiden signalet må være gyldig før klokkeendring. Holdetid er tiden signalet må være gyldig etter klokkeendring.</p>
+<h2 id="vipper-flipflops">Vipper (flipflops)</h2>
+<h3 id="d-vippe">D-vippe</h3>
+<p><span class="math inline">\(Q_{next} = D\)</span>.</p>
+<table>
+<caption>Eksitasjonstabell, D-vippe</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(Q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Q_{next}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(D\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="t-vippe">T-vippe</h3>
+<p>Høy <span class="math inline">\(T\)</span> inverterer.</p>
+<table>
+<caption>Eksitasjonstabell, T-vippe</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(Q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Q_{next}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(T\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sr-vippe">SR-vippe</h3>
+<p>Høy <span class="math inline">\(S\)</span>, lav <span class="math inline">\(R\)</span> gir <span class="math inline">\(1\)</span>. Høy <span class="math inline">\(R\)</span>, lav <span class="math inline">\(S\)</span> gir <span class="math inline">\(0\)</span>.</p>
+<table>
+<caption>Eksitasjonstabell, SR-vippe</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(Q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Q_{next}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(S\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(R\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(X\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(X\)</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="jk-vippe">JK-vippe</h3>
+<p>Lik SR-vippe, men høy høy gir toggle.</p>
+<table>
+<caption>Eksitasjonstabell, SR-vippe</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(Q\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Q_{next}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(J\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(K\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(X\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(X\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(X\)</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(X\)</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kritisk-sti">Kritisk sti</h2>
+<p>Kritisk sti er maksimal forsinkelse mellom inngang og utgang.</p>
+<h2 id="maksimal-klokkefrekvens">Maksimal klokkefrekvens</h2>
+<p>Maksimal klokkefrekvens er gitt ved <span class="math display">\[f_{max} = \frac{1}{t_{min}}\]</span></p>
+</body>
+</html>
