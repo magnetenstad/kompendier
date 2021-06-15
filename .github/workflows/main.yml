@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Build
 
 # Controls when the action will run. 
 on:
@@ -24,18 +24,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Make output dir
-        run: |
-          mkdir output
-          cd output
-      
       - name: Convert
         uses: docker://pandoc/core:2.9
         with:
-          args: "--mathjax TMA4115.tex -f latex -t html -s -o output/TMA4115.html"
+          args: "--mathjax TMA4115.tex -f latex -t html -s -o build/TMA4115.html"
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: output # The folder the action should deploy.
+          folder: build # The folder the action should deploy.
